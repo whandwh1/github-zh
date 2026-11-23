@@ -273,6 +273,9 @@ const cases = [
   ['on Dec 1', '于 12 月 1 日'],
   ['6 months', '6 个月'],
   ['3 repositories', '3 个仓库'],
+  // PR 收件箱分组：复数所有格
+  ["Needs your teams' review", '需要你团队评审'],
+  ['Needs your team\u2019s review', '需要你团队评审'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

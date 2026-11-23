@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.3
+// @version      1.3.4
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2212,6 +2212,9 @@
       /^([a-z0-9]|shift|ctrl|alt|esc|enter|tab|command) then ([a-z0-9]|shift|ctrl|alt|esc|enter|tab|command)$/i,
       '$1 然后 $2'
     ],
+
+    /* ---- PR 收件箱分组：单数/复数所有格都覆盖 ---- */
+    [/^Needs your teams?' review$/i, '需要你团队评审'],
 
     /* ---- 仓库卡片计数："940 stars in owner/repo" ---- */
     [
