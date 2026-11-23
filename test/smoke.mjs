@@ -326,6 +326,15 @@ const cases = [
   ['Filter lists', '筛选列表'],
   ['No lists yet', '还没有列表'],
   ['Create a list to organize your starred repositories.', '创建列表来整理你已标星的仓库。'],
+  // 新建发行版
+  ['Publish release', '发布发行版'],
+  ['Release notes', '发行说明'],
+  ['Generate release notes', '生成发行说明'],
+  ['Attach binaries by dropping them here or selecting them.', '拖放到此处或选择文件来附加二进制文件。'],
+  ['Tags previously bound to immutable releases can never be reused.', '曾经绑定到不可变发行版的标签永远无法重复使用。'],
+  ['Too many assets. Releases are limited to 1000 assets.', '资源过多。每个发行版最多 1000 个资源。'],
+  ["We don't support that file type. Try zipping it.", '我们不支持该文件类型。请尝试将其压缩。'],
+  ['Saving draft failed. Try again?', '保存草稿失败。要重试吗？'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.11
+// @version      1.3.12
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2322,6 +2322,110 @@
       'Filter lists': '筛选列表',
       'No lists yet': '还没有列表',
       'Create a list to organize your starred repositories.': '创建列表来整理你已标星的仓库。'
+    },
+    /* ---------- 1.52 新建发行版 ---------- */
+    '新建发行版': {
+      '. Some good tag names might be': '。一些好的标签名可能是',
+      'A draft of this release has been saved!': '此发行版的草稿已保存！',
+      'A newly published release will automatically be labeled as the latest release for this repository.':
+        '新发布的发行版将自动被标记为此仓库的最新发行版。',
+      'Add files': '添加文件',
+      'An attachment with that filename already exists.': '该文件名的附件已存在。',
+      'Attach binaries by dropping them here or selecting them.':
+        '拖放到此处或选择文件来附加二进制文件。',
+      'Attach files': '附加文件',
+      'Attaching documents requires write permission to this repository.':
+        '附加文档需要对此仓库的写入权限。',
+      'Bold': '粗体',
+      'Branch with this tag name already exists': '已存在同名分支',
+      'Choose an existing tag, or create a new tag when you publish this release.':
+        '选择一个现有标签，或在发布此发行版时创建新标签。',
+      'Create a new saved reply': '创建新的已保存回复',
+      'Creating a tag with the same name as a branch can cause ambiguity when selecting refs. The tag will still be created when this release is published.':
+        '创建与分支同名的标签会在选择引用时产生歧义。发布此发行版时仍会创建该标签。',
+      'Describe this release': '描述此发行版',
+      'Duplicate tag name': '标签名重复',
+      'Excellent! This tag will be created from the target when you publish this release.':
+        '很好！发布此发行版时，将根据目标创建此标签。',
+      'Existing tag': '现有标签',
+      'Generate release notes': '生成发行说明',
+      'Heading': '标题',
+      "If 'Set as the latest release' is unchecked, the latest release will be determined by higher semantic version and creation date.":
+        '如果未勾选“设为最新发行版”，最新发行版将根据更高的语义化版本号和创建日期来确定。',
+      "If the tag isn't meant for production use, add a pre-release version after the version name. Some good pre-release versions might be":
+        '如果此标签不用于生产环境，请在版本名后添加预发布标识。一些常见的预发布标识可能是',
+      "If you're new to releasing software, we highly recommend to":
+        '如果你是初次发布软件，我们强烈建议',
+      'Invalid tag name': '标签名无效',
+      "It's common practice to prefix your version names with the letter":
+        '通常的做法是在版本名前加上字母',
+      'Italic': '斜体',
+      'Label release as non-production ready': '将发行版标记为非生产就绪',
+      'Learn more about release settings.': '详细了解发行版设置。',
+      'Link': '链接',
+      'Loading tag information…': '正在加载标签信息…',
+      'Mention': '提及',
+      'New release': '新建发行版',
+      'No results found.': '未找到结果。',
+      'None': '无',
+      'Numbered list': '有序列表',
+      'Paste, drop, or click to add files': '粘贴、拖放或点击以添加文件',
+      'Pick a branch or recent commit': '选择分支或最近的提交',
+      'Pre-release': '预发布',
+      'Previous tag': '上一个标签',
+      'Publish release': '发布发行版',
+      'Quote': '引用块',
+      'Recent Commits': '最近的提交',
+      'Reference': '引用',
+      'Release description': '发行版描述',
+      'Release label': '发行版标签',
+      'Release notes': '发行说明',
+      'Release title': '发行版标题',
+      'Remove attached binary': '移除已附加的二进制文件',
+      'Save draft': '保存草稿',
+      'Saving draft failed. Try again?': '保存草稿失败。要重试吗？',
+      'Saving release…': '正在保存发行版…',
+      'Select a previous tag to create generated release notes':
+        '选择上一个标签以生成发行说明',
+      'Select a reply': '选择回复',
+      'Select a valid tag to automatically add the Markdown for all the merged pull requests from this diff and contributors of this release':
+        '选择有效标签，以自动为此次差异中所有已合并的拉取请求以及本发行版的贡献者添加 Markdown',
+      'Select tag': '选择标签',
+      'Semantic versioning': '语义化版本',
+      "Something went really wrong, and we can't process that file.":
+        '出了点问题，我们无法处理该文件。',
+      'Tag': '标签',
+      'Tag name unavailable': '标签名不可用',
+      'Tagging suggestions': '标签建议',
+      'Tags previously bound to immutable releases can never be reused.':
+        '曾经绑定到不可变发行版的标签永远无法重复使用。',
+      'Target:': '目标：',
+      'Task list': '任务列表',
+      'There was an error creating your Release.': '创建你的发行版时出错。',
+      'This file is hidden.': '此文件已隐藏。',
+      'This tag already has release notes. Would you like to':
+        '此标签已有发行说明。你是否想',
+      'Too many assets. Releases are limited to 1000 assets.':
+        '资源过多。每个发行版最多 1000 个资源。',
+      'Try a different file.': '请换一个文件。',
+      'Try again with a file that\'s not empty.': '请用非空文件重试。',
+      'Try again with another file.': '请用另一个文件重试。',
+      'Try again.': '请重试。',
+      'Try another file.': '请尝试另一个文件。',
+      'Unordered list': '无序列表',
+      'Uploading your file now…': '正在上传你的文件…',
+      "We can't create a tag with this name. Take a look at the suggestions in the sidebar for example tag names.":
+        '我们无法用此名称创建标签。请查看侧栏中的建议以获取示例标签名。',
+      "We don't support that file type.": '我们不支持该文件类型。',
+      "We don't support that file type. Try zipping it.":
+        '我们不支持该文件类型。请尝试将其压缩。',
+      "Yowza, that's a big file.": '哇，这文件可真大。',
+      'edit the existing notes': '编辑现有说明',
+      'is supported': '受支持',
+      'learn more about semantic versioning.': '详细了解语义化版本。',
+      'will be deleted': '将被删除',
+      'with a file smaller than 2GB.': '使用小于 2GB 的文件。',
+      "with a file that's not empty.": '使用非空文件。'
     }
   };
 
