@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.9
+// @version      1.3.10
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2307,6 +2307,14 @@
       'Open in Visual Studio Code': '在 Visual Studio Code 中打开',
       'Open in JupyterLab': '在 JupyterLab 中打开',
       'Codespace usage for this repo': '此仓库的代码空间用量'
+    },
+    /* ---------- 1.50 代码空间空状态 ---------- */
+    '代码空间空状态': {
+      'No codespaces': '没有代码空间',
+      "You don't have any codespaces with this repository checked out":
+        '你还没有检出此仓库的代码空间',
+      'Learn more about codespaces...': '详细了解代码空间…',
+      'Learn more about codespaces…': '详细了解代码空间…'
     }
   };
 
@@ -2469,6 +2477,13 @@
     [/^Make ([\w.-]+\/[\w.-]+) private$/, '将 $1 设为私有'],
     [/^Settings: ([\w.-]+\/[\w.-]+)$/, '设置：$1'],
     [/^(\d+) branch protection rules?$/i, '$1 条分支保护规则'],
+
+    /* ---- 代码空间（分支名是动态的） ---- */
+    [/^Create codespace on (.+)$/, '在 $1 上创建代码空间'],
+    [
+      /^Codespace usage for this repository is paid for by (.+)\.$/,
+      '此仓库的代码空间用量由 $1 支付。'
+    ],
 
     /* ---- 仓库卡片计数："940 stars in owner/repo" ---- */
     [

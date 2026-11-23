@@ -315,6 +315,12 @@ const cases = [
   ['New with options...', '使用选项新建…'],
   ['What are codespaces?', '什么是代码空间？'],
   ['Auto-delete codespace', '自动删除代码空间'],
+  // 代码空间空状态
+  ['No codespaces', '没有代码空间'],
+  ["You don't have any codespaces with this repository checked out", '你还没有检出此仓库的代码空间'],
+  ['Create codespace on main', '在 main 上创建代码空间'],
+  ['Learn more about codespaces...', '详细了解代码空间…'],
+  ['Codespace usage for this repository is paid for by whandwh1.', '此仓库的代码空间用量由 whandwh1 支付。'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
