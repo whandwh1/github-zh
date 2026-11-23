@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.2.0
+// @version      1.2.1
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -15,6 +15,7 @@
 // @downloadURL  https://raw.githubusercontent.com/whandwh1/github-zh/main/github-zh.user.js
 // @run-at       document-idle
 // @grant        GM_registerMenuCommand
+// @grant        GM_setClipboard
 // @license      MIT
 // ==/UserScript==
 
@@ -1246,6 +1247,109 @@
     }
   }
 
+  /* ---------- 3.2 导出面板 ---------- */
+
+  let panelEl = null;
+
+  function copyText(text) {
+    if (typeof GM_setClipboard === 'function') {
+      try {
+        GM_setClipboard(text, 'text');
+        return true;
+      } catch (err) {
+        /* 继续尝试其它方式 */
+      }
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (err) {
+      /* 忽略 */
+    }
+    return false;
+  }
+
+  function flash(btn, text) {
+    const old = btn.textContent;
+    btn.textContent = text;
+    setTimeout(function () {
+      btn.textContent = old;
+    }, 1200);
+  }
+
+  /** 页面右下角弹一个只读面板，直接显示要复制的内容 */
+  function showPanel(title, text) {
+    if (panelEl && panelEl.parentNode) panelEl.parentNode.removeChild(panelEl);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'ghzh-ui';
+    wrap.style.cssText =
+      'position:fixed;right:16px;bottom:16px;z-index:2147483647;width:560px;' +
+      'max-width:calc(100vw - 32px);background:#1f2328;color:#e6edf3;' +
+      'border:1px solid #3d444d;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.45);' +
+      'font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden';
+
+    const head = document.createElement('div');
+    head.style.cssText =
+      'display:flex;align-items:center;gap:8px;padding:10px 12px;' +
+      'border-bottom:1px solid #3d444d;background:#262c36';
+
+    const titleEl = document.createElement('span');
+    titleEl.textContent = title;
+    titleEl.style.cssText =
+      'flex:1;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis';
+
+    const btnStyle =
+      'background:#21262d;color:#e6edf3;border:1px solid #3d444d;border-radius:6px;' +
+      'padding:3px 10px;font-size:12px;cursor:pointer';
+
+    const area = document.createElement('textarea');
+    area.readOnly = true;
+    area.value = text;
+    area.style.cssText =
+      'display:block;width:100%;height:300px;box-sizing:border-box;resize:vertical;' +
+      'border:0;outline:0;background:#0d1117;color:#e6edf3;padding:10px 12px;' +
+      'font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace';
+
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.textContent = '复制';
+    copyBtn.style.cssText = btnStyle;
+    copyBtn.addEventListener('click', function () {
+      area.focus();
+      area.select();
+      let ok = false;
+      try {
+        ok = document.execCommand('copy');
+      } catch (err) {
+        ok = false;
+      }
+      if (!ok) ok = copyText(text);
+      flash(copyBtn, ok ? '已复制' : '请按 Ctrl+C');
+    });
+
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.textContent = '关闭';
+    closeBtn.style.cssText = btnStyle;
+    closeBtn.addEventListener('click', function () {
+      wrap.remove();
+      panelEl = null;
+    });
+
+    head.append(titleEl, copyBtn, closeBtn);
+    wrap.append(head, area);
+    document.body.appendChild(wrap);
+    panelEl = wrap;
+
+    area.focus();
+    area.select();
+
+    return wrap;
+  }
+
   function translateString(raw) {
     if (!raw) return null;
 
@@ -1595,18 +1699,26 @@
     });
 
     GM_registerMenuCommand('审计本页未翻译文案（复制到剪贴板）', function () {
-      if (window.__ghzh && window.__ghzh.audit) {
-        window.__ghzh.audit();
-      } else {
+      if (!window.__ghzh || !window.__ghzh.audit) {
         alert('请先开启汉化（脚本当前处于暂停状态）。');
+        return;
+      }
+      try {
+        window.__ghzh.audit();
+      } catch (err) {
+        alert('审计失败：' + (err && err.message ? err.message : err));
       }
     });
 
     GM_registerMenuCommand('导出未翻译汇总（跨页面，复制到剪贴板）', function () {
-      if (window.__ghzh && window.__ghzh.report) {
-        window.__ghzh.report();
-      } else {
+      if (!window.__ghzh || !window.__ghzh.report) {
         alert('请先开启汉化（脚本当前处于暂停状态）。');
+        return;
+      }
+      try {
+        window.__ghzh.report();
+      } catch (err) {
+        alert('导出失败：' + (err && err.message ? err.message : err));
       }
     });
 
@@ -1679,14 +1791,10 @@
           console.log('  ' + (i + 1) + '. ' + s);
         });
 
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard
-            .writeText(JSON.stringify(list, null, 2))
-            .then(function () {
-              console.log('[ghzh] 列表已复制到剪贴板');
-            })
-            .catch(function () {});
-        }
+        const json = JSON.stringify(list, null, 2);
+        copyText(json);
+        showPanel('本页未翻译 · ' + list.length + ' 条', json);
+        console.log('[ghzh] 已弹出面板，点「复制」或直接 Ctrl+C');
 
         return list;
       },
@@ -1708,6 +1816,12 @@
         });
 
         console.log('[ghzh] 未翻译汇总：' + total + ' 条，来自 ' + Object.keys(summary).length + ' 个页面');
+
+        if (!total) {
+          const tip = '暂无记录。请先在设置里打开几个子页面（脚本会自动记录没翻到的英文），再回来导出。';
+          showPanel('未翻译汇总 · 0 条', tip);
+          return summary;
+        }
         Object.keys(summary).forEach(function (key) {
           console.log('\n' + key + '（' + summary[key].length + ' 条）');
           summary[key].forEach(function (s, i) {
@@ -1715,14 +1829,10 @@
           });
         });
 
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard
-            .writeText(JSON.stringify(summary, null, 2))
-            .then(function () {
-              console.log('[ghzh] 汇总已复制到剪贴板');
-            })
-            .catch(function () {});
-        }
+        const json = JSON.stringify(summary, null, 2);
+        copyText(json);
+        showPanel('未翻译汇总 · ' + total + ' 条 / ' + Object.keys(summary).length + ' 个页面', json);
+        console.log('[ghzh] 已弹出面板，点「复制」或直接 Ctrl+C');
 
         return summary;
       },

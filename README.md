@@ -3,7 +3,7 @@
 一个给 **Tampermonkey / Violentmonkey（油猴）** 用的 GitHub 界面汉化脚本：把 GitHub 上的英文界面换成简体中文，同时**绝不碰你的 README、代码、提交信息和仓库名**。
 
 - 脚本文件：`github-zh.user.js`
-- 版本：1.2.0
+- 版本：1.2.1
 - 适用范围：`github.com`、`gist.github.com`
 - 词库：23 个分组、894 条词条，另有 20+ 条正则规则处理时间、数量、短句
 
