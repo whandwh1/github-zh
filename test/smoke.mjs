@@ -335,6 +335,11 @@ const cases = [
   ['Too many assets. Releases are limited to 1000 assets.', '资源过多。每个发行版最多 1000 个资源。'],
   ["We don't support that file type. Try zipping it.", '我们不支持该文件类型。请尝试将其压缩。'],
   ['Saving draft failed. Try again?', '保存草稿失败。要重试吗？'],
+  // 关注者计数（用户资料页）
+  ['1 follower', '1 位关注者'],
+  ['9 followers', '9 位关注者'],
+  ['1.2k followers', '1.2k 位关注者'],
+  ['2 following', '2 正在关注'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

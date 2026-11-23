@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.12
+// @version      1.3.13
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2610,7 +2610,7 @@
       }
     ],
 
-    /* ---- 回应 / 标星计数 ---- */
+    /* ---- 回应 / 标星 / 关注计数 ---- */
     [
       /^(\d+) (?:person|people) reacted with (.+)$/i,
       function (all, n, name) {
@@ -2627,6 +2627,8 @@
     ],
     [/^(\d+) reactions?$/i, '$1 个回应'],
     [/^(\d+) stargazers$/i, '$1 人标星'],
+    [/^([\d.,]+[kKmM]?) followers?$/i, '$1 位关注者'],
+    [/^([\d.,]+[kKmM]?) following$/i, '$1 正在关注'],
 
     /* ---- 动态里「已忽略」的反馈提示 ---- */
     [
