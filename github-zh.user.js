@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.2
+// @version      1.3.3
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -1802,6 +1802,263 @@
       'View token usage': '查看令牌用量',
       'Write code': '编写代码',
       'enter': '回车'
+    },
+    /* ---------- 1.40 仪表盘与 Copilot 模型选择 ---------- */
+    '仪表盘与 Copilot 模型': {
+      'AI credits': 'AI 额度',
+      'Advanced Git commands': '高级 Git 命令',
+      'Ask anything or type @ to add context': '提问，或输入 @ 添加上下文',
+      'Ask anything or type @ to add context with Copilot': '提问，或输入 @ 让 Copilot 参与',
+      'Balances speed and intelligence': '兼顾速度与智能',
+      'Basic Git commands': '基础 Git 命令',
+      'Cancel and close': '取消并关闭',
+      'Create a profile README': '创建个人资料 README',
+      'Dashboard menu': '仪表盘菜单',
+      'Dashboard preview options': '仪表盘预览选项',
+      'Design a Mermaid architecture overview': '设计一份 Mermaid 架构概览',
+      'Edit repositories': '编辑仓库',
+      'Efficiency': '效率',
+      'Fast and cost-efficient': '快速且成本低',
+      'Generate a simple calculator': '生成一个简单计算器',
+      'Git branching': 'Git 分支',
+      'Intelligence': '智能',
+      'Item': '条目',
+      'Items will be filtered as you type': '输入时会实时筛选条目',
+      'Learn more about Included credits': '详细了解包含额度',
+      'Make a Pong game': '制作一个 Pong 游戏',
+      'Most powerful at complex tasks': '在复杂任务上最强',
+      'Optimized for': '优化目标',
+      'Optimized for: Balance': '优化目标：均衡',
+      'Prioritizes intelligence': '优先考虑智能',
+      'Prioritizes speed and efficiency': '优先考虑速度与效率',
+      'Refresh for latest usage': '刷新以获取最新用量',
+      'Resets': '重置时间',
+      'Select a repository': '选择仓库',
+      'Select repositories to attach to conversation': '选择要附加到对话的仓库',
+      'Site navigation': '站点导航',
+      'Token usage': '令牌用量',
+      'Upgrade Copilot plan': '升级 Copilot 套餐',
+      'Versatile and highly intelligent': '通用且高度智能',
+      'Windows (ARM)': 'Windows（ARM）',
+      'Windows (x64)': 'Windows（x64）',
+      'macOS (Intel)': 'macOS（Intel）',
+      'macOS (Silicon)': 'macOS（Apple 芯片）',
+      'provider': '提供商',
+      'to access more models and higher limits.': '以获取更多模型和更高限额。'
+    },
+
+    /* ---------- 1.41 动态（Feed） ---------- */
+    '动态': {
+      'Activity you want to see on your feed': '你希望在动态中看到的活动',
+      'Add or remove reactions': '添加或移除回应',
+      'Add this repository to a list': '将此仓库添加到列表',
+      'All reactions': '全部回应',
+      'By default, the feed shows events from repositories you sponsor or watch, and people you follow.':
+        '默认情况下，动态会展示你赞助或关注的仓库以及你关注的用户的事件。',
+      'Create list': '创建列表',
+      'Customize filters': '自定义筛选',
+      'Events': '事件',
+      'Feed item options': '动态条目选项',
+      'Filters are loading': '正在加载筛选条件',
+      'Follows': '关注',
+      'I want to see fewer published releases': '我想少看到一些已发布的发行版',
+      'Include events from starred repositories': '包含来自已标星仓库的事件',
+      'Issues and pull requests from repositories': '来自仓库的议题和拉取请求',
+      'Lists': '列表',
+      'Loading your activity...': '正在加载你的动态…',
+      'New codespace': '新建代码空间',
+      'New project': '新建项目',
+      'One moment please...': '请稍候…',
+      'Recommendations': '推荐',
+      'Recommended for you': '为你推荐',
+      'Relevant projects or people that are being sponsored': '正在接受赞助的相关项目或用户',
+      'Reload this page': '重新加载此页面',
+      'Repositories and people you may like': '你可能会喜欢的仓库和用户',
+      'Repositories being starred by people': '用户正在标星的仓库',
+      'Repositories that are created or forked by people': '用户创建或复刻的仓库',
+      'Repository activity': '仓库活动',
+      'Reset to default': '重置为默认',
+      'See more': '查看更多',
+      'Send feedback': '发送反馈',
+      'Show less activity like this': '少显示这类动态',
+      'Special discussion posts from repositories': '来自仓库的特别讨论帖',
+      'Star this repository': '为此仓库标星',
+      'Starred, click to unstar this repository': '已标星，点击可取消标星',
+      'Tell us more about your preferences': '告诉我们更多你的偏好',
+      'There was an error in loading the activity feed.': '加载动态时出错。',
+      'Undo': '撤销',
+      'Update posts from repositories': '来自仓库的更新帖',
+      'Who people are following': '用户正在关注谁',
+      "You don't have any lists yet.": '你还没有任何列表。',
+      'released': '已发布',
+      'eyes': '关注',
+      'heart': '爱心',
+      'hooray': '欢呼',
+      'laugh': '大笑',
+      'rocket': '火箭',
+      'thumbs up': '赞',
+      'react with eyes': '用「关注」回应',
+      'react with heart': '用「爱心」回应',
+      'react with hooray': '用「欢呼」回应',
+      'react with laugh': '用「大笑」回应',
+      'react with rocket': '用「火箭」回应',
+      'react with thumbs up': '用「赞」回应'
+    },
+
+    /* ---------- 1.42 通知收件箱 ---------- */
+    '通知收件箱': {
+      'Add new filter': '添加新筛选',
+      'All caught up!': '全部处理完了！',
+      'Close dialog': '关闭对话框',
+      'Date': '日期',
+      'Folders': '文件夹',
+      'Group by:': '分组方式：',
+      'Inbox zero': '收件箱已清空',
+      'Manage notifications': '管理通知',
+      'Newest to oldest': '最新优先',
+      'Not available': '不可用',
+      'Notification filters': '通知筛选',
+      'Notifications by date': '按日期分组的通知',
+      'Oldest to newest': '最早优先',
+      'Search for repositories': '搜索仓库',
+      'Search notifications': '搜索通知',
+      'Sort by:': '排序方式：',
+      'Suggestions': '建议',
+      'Switch inbox': '切换收件箱',
+      'Take a break, write some code, do what you do best.': '休息一下，写点代码，做你最擅长的事。',
+      'Team mentioned': '团队被提及',
+      'Top repositories': '热门仓库',
+      'Watched repositories': '已关注的仓库',
+      '✋ Mentioned': '✋ 被提及',
+      '🎯 Assigned': '🎯 已指派',
+      '👀 Review requested': '👀 请求评审',
+      '💬 Participating': '💬 参与中',
+      '🙌 Team mentioned': '🙌 团队被提及'
+    },
+
+    /* ---------- 1.43 仓库列表 ---------- */
+    '仓库列表': {
+      'Collapse sidebar': '折叠侧栏',
+      'Comfortable display density': '舒适显示密度',
+      'Compact display density': '紧凑显示密度',
+      'Create view': '创建视图',
+      "Don't forget that you can create saved views to keep track of your most important repositories!":
+        '别忘了，你可以创建已保存视图来跟踪最重要的仓库！',
+      'Filter repositories': '筛选仓库',
+      'Open Repository filters': '打开仓库筛选',
+      'Relevance': '相关度',
+      'Repositories list': '仓库列表',
+      'Repositories list display density': '仓库列表显示密度',
+      'Repository filters': '仓库筛选',
+      'Repository settings': '仓库设置',
+      'Search repositories': '搜索仓库',
+      'Sort by Relevance descending': '按相关度降序排序',
+      'Using a comma within certain filters will aggregate the results. For example:':
+        '在部分筛选条件中使用逗号会合并结果。例如：',
+      'will show all repositories that have either Go or Ruby as their primary language.':
+        '将显示所有以 Go 或 Ruby 为主要语言的仓库。'
+    },
+
+    /* ---------- 1.44 设置页残留补充 ---------- */
+    '设置·残留补充': {
+      'Enable': '启用',
+      'Off': '关闭',
+      'On': '开启',
+      'Update': '更新',
+      'Commit comments': '提交评论',
+      'Commit comments:': '提交评论：',
+      'commit comments': '提交评论',
+      'Email address': '邮箱地址',
+      'Primary': '主邮箱',
+      'Manage email preferences': '管理邮箱偏好',
+      'At least one email is required.': '至少需要一个邮箱。',
+      'Delete: At least one email is required.': '删除：至少需要一个邮箱。',
+      'Allow all verified emails': '允许所有已验证邮箱',
+      'Only allow primary email': '仅允许主邮箱',
+      'Select email to become backup': '选择要设为备用邮箱的地址',
+      'Select email to become primary': '选择要设为主邮箱的地址',
+      'Select an email to be used for account-related notifications and can be used for password reset.':
+        '选择一个用于接收账户相关通知、并可用于重置密码的邮箱。',
+      'Previously authored commits associated with a public email will remain public.':
+        '先前用公开邮箱提交的记录仍将保持公开。',
+      "We'll remove your public profile email and use": '我们将移除你资料页的公开邮箱，改用',
+      'set your email in Git': '在 Git 中设置你的邮箱',
+      'Search by username, full name, or email address': '按用户名、全名或邮箱地址搜索',
+      'Search by username, full name or email address': '按用户名、全名或邮箱地址搜索',
+      'Search by username, full name, or public email': '按用户名、全名或公开邮箱搜索',
+      'Select whether animated images should play automatically.': '选择是否自动播放动图。',
+      'OAuth Apps': 'OAuth 应用',
+      'GitHub Education': 'GitHub 教育',
+      'GitHub Sponsors': 'GitHub 赞助',
+      'Settings Sync': '设置同步',
+      'GPG and VS Code Settings Sync will be available for Codespaces from these repositories.':
+        '这些仓库的代码空间将支持 GPG 与 VS Code 设置同步。',
+      'GPG signing and VS Code Settings Sync will be available for codespaces for all repositories':
+        '所有仓库的代码空间都将支持 GPG 签名与 VS Code 设置同步',
+      'GPG signing and VS Code Settings Sync will be available for codespaces from the selected repositories':
+        '所选仓库的代码空间将支持 GPG 签名与 VS Code 设置同步',
+      'The following repositories will be referenced by GPG verification and Settings Sync.':
+        '以下仓库将被 GPG 验证和设置同步引用。',
+      'This setting automatically installs your dotfiles in environments created by Codespaces and Copilot cloud agent.':
+        '此设置会在代码空间和 Copilot 云智能体创建的环境中自动安装你的 dotfiles。',
+      'Disabled by default': '默认禁用',
+      'Enabled by default': '默认启用',
+      'Choose whether': '选择是否',
+      'Learn more about default branches.': '详细了解默认分支。',
+      "You don't have any repositories yet. Would you like to": '你还没有任何仓库。要',
+      'create one': '创建一个',
+      'Block user': '屏蔽用户',
+      'Currently blocked': '当前已屏蔽',
+      'Find blocked users': '查找已屏蔽用户',
+      'Learn more about blocking a user': '详细了解如何屏蔽用户',
+      'Add an optional note': '添加可选备注',
+      'Additionally, blocked users are not able to:': '此外，被屏蔽的用户无法：',
+      'Blocking a user prevents the following on all your repositories:':
+        '屏蔽某个用户后，该用户将无法在你所有仓库中执行以下操作：',
+      'Close all open issues, pull requests, and discussions opened by this user':
+        '关闭该用户创建的所有打开的议题、拉取请求和讨论',
+      'Warn me when blocked users have contributed to a repository':
+        '当被屏蔽用户对仓库有贡献时提醒我',
+      'You can block a user to deny them access to repositories and more.':
+        '你可以屏蔽用户，阻止其访问仓库等资源。',
+      'You have not blocked anyone.': '你还没有屏蔽任何人。',
+      'You are about to block:': '你即将屏蔽：',
+      'adding or editing wiki pages': '添加或编辑 wiki 页面',
+      "follow your account's public activity": '关注你账号的公开动态',
+      'invite you as a collaborator to their repositories': '邀请你作为协作者加入其仓库',
+      'opening or commenting on issues or pull requests': '打开议题或拉取请求，或在其下评论',
+      'send you notifications by @mentioning your username in public repositories':
+        '在公开仓库中 @ 你的用户名给你发送通知',
+      'starring, forking, or watching': '标星、复刻或关注',
+      'Enable interaction limit to existing users': '对现有用户启用交互限制',
+      'Enable interaction limit to prior contributors': '对过去的贡献者启用交互限制',
+      'Enable interaction limit to repository collaborators': '对仓库协作者启用交互限制',
+      'Enable interaction limits for:': '为以下对象启用交互限制：',
+      'Limit to existing users': '限制为现有用户',
+      'Limit to prior contributors': '限制为过去的贡献者',
+      'Limit to repository collaborators': '限制为仓库协作者',
+      'New users': '新用户',
+      'Collaborators': '协作者',
+      "Interaction limits may already exist in your account's": '你账号的以下位置可能已存在交互限制：',
+      '. Any changes here will override those limits.': '。此处的更改将覆盖那些限制。',
+      'This may be used to force a "cool-down" period during heated discussions or prevent unwanted interactions.':
+        '可用于在讨论激烈时强制一段冷静期，或防止不受欢迎的互动。',
+      'Users that are not collaborators of one of your repositories will not be able to interact with that repository.':
+        '不是你任一仓库协作者的用户将无法与该仓库互动。',
+      'Users that have recently created their account will be unable to interact with your repositories.':
+        '最近注册账号的用户将无法与你的仓库互动。',
+      'Disable all dependabot self-hosted': '禁用所有自托管 Dependabot',
+      'Disable dependabot self-hosted': '禁用自托管 Dependabot',
+      'Enable all dependabot self-hosted': '启用所有自托管 Dependabot',
+      'Enable dependabot self-hosted': '启用自托管 Dependabot',
+      "You're about to disable dependabot self-hosted on all your repositories.":
+        '你即将在你所有仓库上禁用自托管 Dependabot。',
+      'Enable all Dependabot alerts': '启用所有 Dependabot 警报',
+      'Enable all Dependabot security updates': '启用所有 Dependabot 安全更新',
+      'Enable all dependency graph': '启用所有依赖关系图',
+      'Enable all grouped security updates': '启用所有分组安全更新',
+      'Enable all private vulnerability reporting': '启用所有私密漏洞报告',
+      'User': '用户'
     }
   };
 
@@ -1954,6 +2211,91 @@
     [
       /^([a-z0-9]|shift|ctrl|alt|esc|enter|tab|command) then ([a-z0-9]|shift|ctrl|alt|esc|enter|tab|command)$/i,
       '$1 然后 $2'
+    ],
+
+    /* ---- 仓库卡片计数："940 stars in owner/repo" ---- */
+    [
+      /^([\d.,]+[kKmM]?) (forks|issues|pull requests|stars) in (.+)$/,
+      function (all, count, unit, repo) {
+        const t = {
+          forks: '次复刻',
+          issues: '个议题',
+          'pull requests': '个拉取请求',
+          stars: '个星标'
+        }[unit];
+        return t ? repo + ' 有 ' + count + ' ' + t : all;
+      }
+    ],
+
+    /* ---- 回应 / 标星计数 ---- */
+    [
+      /^(\d+) (?:person|people) reacted with (.+)$/i,
+      function (all, n, name) {
+        const map = {
+          'thumbs up': '赞',
+          heart: '爱心',
+          hooray: '欢呼',
+          laugh: '大笑',
+          eyes: '关注',
+          rocket: '火箭'
+        };
+        return n + ' 人用「' + (map[name.toLowerCase()] || name) + '」回应';
+      }
+    ],
+    [/^(\d+) reactions?$/i, '$1 个回应'],
+    [/^(\d+) stargazers$/i, '$1 人标星'],
+
+    /* ---- 动态里「已忽略」的反馈提示 ---- */
+    [
+      /^Dismissed a (recommendation|release|repository) from (.+?)\. Thank you for the feedback!$/,
+      function (all, kind, name) {
+        const t = { recommendation: '推荐', release: '发行版', repository: '仓库' }[kind];
+        return t ? '已忽略来自 ' + name + ' 的' + t + '。感谢你的反馈！' : all;
+      }
+    ],
+    [/^I'm not interested in published releases from (.+)$/i, '我对 $1 发布的发行版不感兴趣'],
+    [/^I'm not interested in (.+)$/i, '我对 $1 不感兴趣'],
+
+    /* ---- 图表标签 / 列表计数 ---- */
+    [/^(.+)'s past year of commit activity$/i, '$1 过去一年的提交活动'],
+    [/^Release interactions (\d+)$/i, '发行版互动 $1'],
+    [/^Release Contributors (\d+)$/i, '发行版贡献者 $1'],
+    [/^Included credits: (\d+)% used$/i, '包含额度：已用 $1%'],
+    [/^Selected (\d+) repositories?\.$/i, '已选择 $1 个仓库。'],
+    [/^No recoverable packages were found for (.+)\.$/i, '未找到 $1 的可恢复包。'],
+    [/^Open type options for (.+)$/i, '打开 $1 的类型选项'],
+    [/^View actions for (.+) budget for Account (.+)$/i, '查看账户 $2 的 $1 预算操作'],
+    [
+      /^View details of session from (.+?) last accessed (.+)$/i,
+      '查看来自 $1 的会话详情（最后访问于 $2）'
+    ],
+    [/^(\d+) repositories?$/i, '$1 个仓库'],
+
+    /* ---- 时长 ---- */
+    [
+      /^(\d+) (hour|day|week|month)s?$/i,
+      function (all, n, unit) {
+        const t = { hour: '小时', day: '天', week: '周', month: '个月' }[unit.toLowerCase()];
+        return t ? n + ' ' + t : all;
+      }
+    ],
+
+    /* ---- 完整月份 + 时间，如 "November 22, 2026 07:15" ---- */
+    [
+      /^([A-Z][a-z]+) (\d{1,2}), (\d{4}) (\d{1,2}:\d{2})$/,
+      function (all, mon, day, year, time) {
+        const mo = MONTHS[mon.slice(0, 3).toLowerCase()];
+        return mo ? year + '年' + mo + '月' + day + '日 ' + time : all;
+      }
+    ],
+
+    /* ---- "on Dec 1" ---- */
+    [
+      /^on ([A-Z][a-z]{2}) (\d{1,2})$/,
+      function (all, mon, day) {
+        const mo = MONTHS[mon.toLowerCase()];
+        return mo ? '于 ' + mo + ' 月 ' + day + ' 日' : all;
+      }
     ]
   ];
 
