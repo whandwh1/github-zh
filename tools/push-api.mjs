@@ -25,6 +25,11 @@ const BRANCH = 'main';
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const API = 'https://api.github.com';
 
+// 本机系统代理（Clash 等）。不要直连——这台机器访问 GitHub 必须走代理。
+// 用 GHZH_PROXY 覆盖，设为 none 才直连。
+const PROXY = process.env.GHZH_PROXY || 'http://127.0.0.1:7890';
+const USE_PROXY = PROXY && PROXY !== 'none';
+
 function readToken() {
   if (process.env.GITHUB_TOKEN && process.env.GITHUB_TOKEN.trim()) {
     return process.env.GITHUB_TOKEN.trim();
@@ -41,7 +46,8 @@ function readToken() {
 
 async function request(method, url, body, token) {
   const args = [
-    '-sS', '--noproxy', '*', '-m', '60', '--http1.1',
+    '-sS', '-m', '60', '--http1.1',
+    ...(USE_PROXY ? ['-x', PROXY] : []),
     '-H', 'Expect:',
     '-w', '\\n%{http_code}', '-K', '-'
   ];
