@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.1.0
+// @version      1.1.1
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -483,7 +483,19 @@
       'compare': '对比分支',
       'Choose different branches': '选择不同的分支',
       'Able to merge.': '可以合并。',
-      'These branches can be automatically merged.': '这些分支可以自动合并。'
+      'These branches can be automatically merged.': '这些分支可以自动合并。',
+      'Authored by me': '我创建的',
+      'Involves me': '与我相关',
+      'Review requests': '评审请求',
+      'Views': '视图',
+      'No saved views': '没有已保存的视图',
+      'Select repositories': '选择仓库',
+      'Needs your review': '需要你评审',
+      "Needs your team's review": '需要你团队评审',
+      'Your drafts': '你的草稿',
+      'Waiting for review or checks': '等待评审或检查',
+      'Needs action': '需要处理',
+      'Ready to merge': '可以合并'
     },
 
     /* ---------- 1.8 讨论 ---------- */
@@ -1139,6 +1151,13 @@
     [/^this branch is ([\d,]+) commits? ahead of (.+)\.$/i, '此分支领先 $2 $1 个提交。'],
     [/^this branch is ([\d,]+) commits? behind (.+)\.$/i, '此分支落后 $2 $1 个提交。'],
     [/^forked from (.+)$/i, '复刻自 $1'],
+    [
+      /^Updated:\s*(.+)$/i,
+      function (all, rest) {
+        const zh = translateString(String(rest));
+        return '更新时间：' + (zh !== null ? zh.trim() : String(rest).trim());
+      }
+    ],
     [/^page (\d+) of (\d+)$/i, '第 $1 页，共 $2 页']
   ];
 

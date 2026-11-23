@@ -189,6 +189,17 @@ const cases = [
     '你的姓名会出现在 GitHub 上你贡献或被提及的地方，随时可以移除。'],
   ['Please correct the following errors:', '请修正以下错误：'],
   ['Search settings', '搜索设置'],
+  // PR 收件箱
+  ['Authored by me', '我创建的'],
+  ['Involves me', '与我相关'],
+  ['Review requests', '评审请求'],
+  ['No saved views', '没有已保存的视图'],
+  ['Select repositories', '选择仓库'],
+  ['Needs your review', '需要你评审'],
+  ["Needs your team's review", '需要你团队评审'],
+  ['Waiting for review or checks', '等待评审或检查'],
+  ['Ready to merge', '可以合并'],
+  ['Updated: Last month', '更新时间：上个月'],
   // 议题看板筛选
   ['Assigned to me', '指派给我的'],
   ['Created by me', '我创建的'],
