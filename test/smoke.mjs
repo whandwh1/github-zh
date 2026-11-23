@@ -200,6 +200,11 @@ const cases = [
   ['Waiting for review or checks', '等待评审或检查'],
   ['Ready to merge', '可以合并'],
   ['Updated: Last month', '更新时间：上个月'],
+  // 组织仓库页筛选
+  ['My contributions', '我的贡献'],
+  ['My repositories', '我的仓库'],
+  ['My forks', '我的复刻'],
+  ['Admin access', '管理权限'],
   // 议题看板筛选
   ['Assigned to me', '指派给我的'],
   ['Created by me', '我创建的'],

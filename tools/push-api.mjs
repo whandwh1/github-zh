@@ -40,43 +40,78 @@ function readToken() {
 }
 
 async function request(method, url, body, token) {
-  const res = await fetch(API + url, {
-    method,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'github-zh-push',
-      ...(body ? { 'Content-Type': 'application/json' } : {})
-    },
-    body: body ? JSON.stringify(body) : undefined
-  });
-  const text = await res.text();
+  const args = [
+    '-sS', '--noproxy', '*', '-m', '60', '--http1.1',
+    '-H', 'Expect:',
+    '-w', '\\n%{http_code}', '-K', '-'
+  ];
+  let tmpFile = null;
+
+  if (body) {
+    tmpFile = path.join(os.tmpdir(), `ghzh-body-${process.pid}-${Date.now()}.json`);
+    fs.writeFileSync(tmpFile, JSON.stringify(body));
+    args.push('--data-binary', `@${tmpFile}`);
+  }
+
+  const conf = [
+    `request = "${method}"`,
+    `url = "${API}${url}"`,
+    'header = "Authorization: Bearer ' + token + '"',
+    'header = "Accept: application/vnd.github+json"',
+    'header = "X-GitHub-Api-Version: 2022-11-28"',
+    'header = "User-Agent: github-zh-push"',
+    ...(body ? ['header = "Content-Type: application/json"'] : [])
+  ].join('\n');
+
+  let out;
+  try {
+    out = execFileSync('curl', args, {
+      input: conf,
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024
+    });
+  } catch (err) {
+    const detail = (err.stderr || err.message || '').toString().split('\n').slice(-3).join(' ').trim();
+    const netErr = new Error(`curl 失败：${detail || '未知错误'}`);
+    throw netErr;
+  } finally {
+    if (tmpFile) {
+      try {
+        fs.unlinkSync(tmpFile);
+      } catch {}
+    }
+  }
+
+  const m = /^([\s\S]*)\n(\d{3})$/.exec(out);
+  const status = m ? parseInt(m[2], 10) : 0;
+  const text = m ? m[1] : out;
+
   let data = null;
   try {
     data = text ? JSON.parse(text) : null;
   } catch {
     data = text;
   }
-  if (!res.ok) {
+
+  if (!status || status >= 400) {
     const msg = data && data.message ? data.message : String(text).slice(0, 200);
-    const err = new Error(`${method} ${url} -> ${res.status} ${msg}`);
-    err.status = res.status;
+    const err = new Error(`${method} ${url} -> ${status} ${msg}`);
+    if (status) err.status = status;
     throw err;
   }
   return data;
 }
 
-/** 网络抖动（fetch failed / ECONNRESET）自动重试，HTTP 状态错误不重试 */
-async function api(method, url, body, token, tries = 3) {
+/** 网络抖动（连接被重置 / 超时）自动重试，HTTP 状态错误不重试 */
+async function api(method, url, body, token, tries = 5) {
   for (let i = 0; ; i++) {
     try {
       return await request(method, url, body, token);
     } catch (err) {
       const isNetwork = !err.status;
       if (!isNetwork || i >= tries - 1) throw err;
-      const wait = 1200 * (i + 1);
-      console.warn(`  网络错误（${err.message}），${wait}ms 后重试…`);
+      const wait = Math.min(2000 * Math.pow(2, i), 20000);
+      console.warn(`  网络错误（${err.message}），${Math.round(wait / 1000)}s 后重试…`);
       await new Promise((r) => setTimeout(r, wait));
     }
   }
