@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.0.8
+// @version      1.1.0
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -785,6 +785,239 @@
       'created the branch': '创建了分支',
       'mentioned this issue': '提及了此议题',
       'referenced this issue': '引用了此议题'
+    },
+
+    /* ---------- 1.18 设置·资料与账户 ---------- */
+    '设置·资料与账户': {
+      'Profile': '个人资料',
+      'Your profile': '你的个人主页',
+      'Avatar': '头像',
+      'Edit avatar': '编辑头像',
+      'Upload a photo...': '上传照片…',
+      'Remove photo': '移除照片',
+      'Name': '姓名',
+      'Your name may appear around GitHub where you contribute or are mentioned. You can remove it at any time.':
+        '你的姓名会出现在 GitHub 上你贡献或被提及的地方，随时可以移除。',
+      'Select a verified email to display': '选择一个已验证的邮箱用于展示',
+      'You can manage verified email addresses in your email settings.': '你可以在邮件设置中管理已验证的邮箱地址。',
+      'You can @mention other users and organizations to link to them.':
+        '你可以 @提及 其他用户和组织来链接到他们。',
+      'URL': '网址',
+      'Link to social profiles': '链接到社交资料',
+      'Contributions & Activity': '贡献与活动',
+      'Contributions & activity': '贡献与活动',
+      'Include private contributions on my profile': '在我的个人主页上包含私有贡献',
+      'Show Achievements on my profile': '在我的主页上显示成就',
+      'Change your username': '修改用户名',
+      'Change username': '修改用户名',
+      'Changing your username can have unintended side effects.': '修改用户名可能带来意外影响。',
+      'Export account data': '导出账户数据',
+      'Start export': '开始导出',
+      'Delete account': '删除账户',
+      'Delete your account': '删除你的账户',
+      'Once you delete your account, there is no going back. Please be certain.':
+        '账户一旦删除将无法恢复，请务必确认。',
+      'Are you absolutely sure?': '你确定要这么做吗？',
+      'Deactivate account': '停用账户',
+      'Blocked users': '已屏蔽的用户',
+      'Block a user': '屏蔽用户',
+      'You have no blocked users.': '你没有屏蔽任何用户。',
+      'Unblock': '取消屏蔽',
+      'Organizations you belong to': '你所属的组织',
+      "You don't belong to any organizations yet.": '你还没有加入任何组织。',
+      'Leave organization': '离开组织',
+      'Primary email address': '主邮箱地址',
+      'Backup email address': '备用邮箱地址',
+      'Add email address': '添加邮箱地址',
+      'Add email': '添加邮箱',
+      'Keep my email addresses private': '保持我的邮箱地址私密',
+      'Block command line pushes that expose my email': '阻止暴露我邮箱的命令行推送',
+      'Resend verification email': '重新发送验证邮件',
+      'Set as primary': '设为主邮箱',
+      'There are no verified emails associated with your account.': '你的账户没有已验证的邮箱。',
+      'Repository default branch': '仓库默认分支',
+      'Default branch name': '默认分支名称',
+      'Repository visibility': '仓库可见性',
+      'Template repositories': '模板仓库',
+      'Deleted repositories': '已删除的仓库',
+      'Restore': '恢复',
+      'Add saved reply': '添加已保存的回复',
+      'Create saved reply': '创建已保存的回复',
+      "You haven't created any saved replies yet.": '你还没有创建任何已保存的回复。',
+      'Search settings': '搜索设置',
+      'All settings': '所有设置',
+      'General': '通用'
+    },
+
+    /* ---------- 1.19 设置·外观与通知 ---------- */
+    '设置·外观与通知': {
+      'Theme preferences': '主题偏好',
+      'Theme mode': '主题模式',
+      'Single theme': '单一主题',
+      'Sync with system': '跟随系统',
+      'Light': '浅色',
+      'Dark': '深色',
+      'Light default': '浅色（默认）',
+      'Dark default': '深色（默认）',
+      'Light high contrast': '浅色高对比度',
+      'Dark high contrast': '深色高对比度',
+      'Light colorblind': '浅色色觉辅助',
+      'Dark colorblind': '深色色觉辅助',
+      'Light dimmed': '浅色柔和',
+      'Dark dimmed': '深色柔和',
+      'Choose a theme': '选择主题',
+      'Markdown editor font size preference': 'Markdown 编辑器字号偏好',
+      'Keyboard shortcuts': '键盘快捷键',
+      'Character keys': '字符键',
+      'Link underlines': '链接下划线',
+      'Show link underlines': '显示链接下划线',
+      'Motion': '动效',
+      'Enable motion': '启用动效',
+      'Hovercards': '悬浮卡片',
+      'Disable hovercards': '禁用悬浮卡片',
+      'Notification preferences': '通知偏好',
+      'Email notification preferences': '邮件通知偏好',
+      'Default notification email': '默认通知邮箱',
+      'Custom routing': '自定义路由',
+      'Participating, @mentions and custom': '参与、@提及和自定义',
+      'Automatically watch repositories': '自动关注仓库',
+      'Automatically watch teams': '自动关注团队',
+      'Include your own updates': '包含你自己的更新',
+      'Everything': '全部',
+      'Muted': '已静音',
+      'Notification settings': '通知设置',
+      'System': '系统',
+      'Email': '邮件',
+      'Web': '网页',
+      'Plan': '套餐',
+      'Plans': '套餐',
+      'Current plan': '当前套餐',
+      'Change plan': '更改套餐',
+      'Cancel plan': '取消套餐',
+      'Downgrade': '降级',
+      'Free': '免费',
+      'Payment method': '支付方式',
+      'Add payment method': '添加支付方式',
+      'Billing history': '账单历史',
+      'Receipts': '收据',
+      'Spending limits': '支出上限',
+      'Monthly spending limit': '每月支出上限',
+      'Included usage': '包含的用量',
+      'Billing': '账单'
+    },
+
+    /* ---------- 1.20 设置·安全与登录 ---------- */
+    '设置·安全与登录': {
+      'Change password': '修改密码',
+      'Old password': '当前密码',
+      'New password': '新密码',
+      'Confirm new password': '确认新密码',
+      'Update password': '更新密码',
+      'Password': '密码',
+      'Two-factor authentication': '双重身份验证',
+      'Enable two-factor authentication': '启用双重身份验证',
+      'Disable two-factor authentication': '禁用双重身份验证',
+      'Two-factor methods': '双重验证方式',
+      'Authenticator app': '身份验证器应用',
+      'SMS/Text message': '短信',
+      'Recovery codes': '恢复代码',
+      'View recovery codes': '查看恢复代码',
+      'Security keys': '安全密钥',
+      'Passkeys': '通行密钥',
+      'Add passkey': '添加通行密钥',
+      'Web sessions': '网页会话',
+      'Current session': '当前会话',
+      'This device': '此设备',
+      'Revoke': '撤销',
+      'Revoke all sessions': '撤销所有会话',
+      'Sign out of other sessions': '退出其他会话',
+      'Last accessed on': '最后访问于',
+      'Device': '设备',
+      'Signed in with': '登录方式',
+      'SSH keys': 'SSH 密钥',
+      'New SSH key': '新建 SSH 密钥',
+      'Add new SSH key': '添加新的 SSH 密钥',
+      'Add SSH key': '添加 SSH 密钥',
+      'New GPG key': '新建 GPG 密钥',
+      'Add new GPG key': '添加新的 GPG 密钥',
+      'Add GPG key': '添加 GPG 密钥',
+      'Title': '标题',
+      'Key': '密钥',
+      'Key type': '密钥类型',
+      'Authentication key': '身份验证密钥',
+      'Signing key': '签名密钥',
+      'There are no SSH keys associated with your account.': '你的账户没有关联任何 SSH 密钥。',
+      'There are no GPG keys associated with your account.': '你的账户没有关联任何 GPG 密钥。'
+    },
+
+    /* ---------- 1.21 设置·开发者与集成 ---------- */
+    '设置·开发者与集成': {
+      'GitHub Apps': 'GitHub Apps',
+      'OAuth Apps': 'OAuth Apps',
+      'Personal access tokens': '个人访问令牌',
+      'Personal access tokens (classic)': '个人访问令牌（经典）',
+      'Access tokens': '访问令牌',
+      'Fine-grained tokens': '细粒度令牌',
+      'Tokens (classic)': '令牌（经典）',
+      'Generate new token': '生成新令牌',
+      'Generate new token (classic)': '生成新令牌（经典）',
+      'New personal access token': '新建个人访问令牌',
+      'New fine-grained personal access token': '新建细粒度个人访问令牌',
+      'Scopes': '权限范围',
+      'Select scopes': '选择权限范围',
+      'Note': '备注',
+      'Token name': '令牌名称',
+      'Repository access': '仓库访问权限',
+      'Only select repositories': '仅选择的仓库',
+      'All repositories': '所有仓库',
+      'Public repositories': '公开仓库',
+      'Repository permissions': '仓库权限',
+      'Organization permissions': '组织权限',
+      'Account permissions': '账户权限',
+      'Add permissions': '添加权限',
+      'Read-only': '只读',
+      'Read and write': '读写',
+      'No access': '无访问权限',
+      'Generate token': '生成令牌',
+      'Regenerate token': '重新生成令牌',
+      'Delete token': '删除令牌',
+      'Never used': '从未使用',
+      'Expires on': '到期时间',
+      'Manage': '管理',
+      'Metadata': '元数据',
+      'Installed GitHub Apps': '已安装的 GitHub Apps',
+      'Authorized OAuth Apps': '已授权的 OAuth Apps',
+      'Authorized GitHub Apps': '已授权的 GitHub Apps',
+      'Revoke access': '撤销访问权限',
+      'You have no authorized OAuth Apps.': '你没有已授权的 OAuth 应用。',
+      'Permissions': '权限',
+      'Last used': '最后使用',
+      'Editor': '编辑器',
+      'Default editor': '默认编辑器',
+      'Default region': '默认区域',
+      'Install dotfiles': '安装 dotfiles',
+      'GPG verification': 'GPG 验证',
+      'Trusted repositories': '受信任的仓库',
+      'Delete codespace': '删除代码空间',
+      'Codespaces settings': '代码空间设置',
+      'Webhooks': 'Webhook'
+    },
+
+    /* ---------- 1.22 表单校验与状态提示 ---------- */
+    '状态提示': {
+      'Saving...': '保存中…',
+      'Error': '错误',
+      'Something went wrong': '出错了',
+      'Please try again': '请重试',
+      'This field is required': '此字段为必填项',
+      'Changes saved': '更改已保存',
+      'Are you sure?': '确定吗？',
+      'Yes, delete this': '确定，删除',
+      'There was a problem saving your changes.': '保存更改时出现问题。',
+      'Please correct the following errors:': '请修正以下错误：',
+      'Copied to clipboard': '已复制到剪贴板',
+      'No results': '无结果',
+      'Try again': '再试一次'
     }
   };
 
@@ -1267,6 +1500,14 @@
       schedule(document.body);
       translateTitle();
     });
+
+    GM_registerMenuCommand('审计本页未翻译文案（复制到剪贴板）', function () {
+      if (window.__ghzh && window.__ghzh.audit) {
+        window.__ghzh.audit();
+      } else {
+        alert('请先开启汉化（脚本当前处于暂停状态）。');
+      }
+    });
   }
 
   /* ============================================================
@@ -1292,6 +1533,54 @@
       disable: function () {
         writeFlag(false);
         location.reload();
+      },
+      /**
+       * 审计当前页面：列出「看起来是界面文案、但词库没覆盖」的英文片段。
+       * 用法：__ghzh.audit()，结果打印到控制台并复制到剪贴板。
+       */
+      audit: function () {
+        const hit = new Map();
+        const stack = [document.body];
+
+        while (stack.length) {
+          const el = stack.pop();
+          if (!el || el.nodeType !== 1) continue;
+          if (isSkipped(el) || isNameContainer(el)) continue;
+
+          for (let n = el.firstChild; n; n = n.nextSibling) {
+            if (n.nodeType !== 3) continue;
+            const raw = n.nodeValue;
+            if (!raw || !raw.trim()) continue;
+
+            const norm = normalize(raw);
+            if (!norm || norm.length < 2 || norm.length > MAX_LEN) continue;
+            if (!/[A-Za-z]/.test(norm) || CJK_RE.test(norm)) continue;
+            if (/^[\w.@-]+\/[\w.@-]+$/.test(norm)) continue;
+            if (translateString(raw) !== null) continue;
+
+            hit.set(norm, (hit.get(norm) || 0) + 1);
+          }
+
+          const kids = el.children;
+          for (let i = 0; i < kids.length; i++) stack.push(kids[i]);
+        }
+
+        const list = Array.from(hit.keys()).sort();
+        console.log('[ghzh] 未覆盖的英文文案：' + list.length + ' 条');
+        list.forEach(function (s, i) {
+          console.log('  ' + (i + 1) + '. ' + s);
+        });
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(JSON.stringify(list, null, 2))
+            .then(function () {
+              console.log('[ghzh] 列表已复制到剪贴板');
+            })
+            .catch(function () {});
+        }
+
+        return list;
       },
       dict: DICT,
       sections: DICT_SECTIONS,

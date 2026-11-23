@@ -39,6 +39,7 @@ const html = `<!doctype html>
       <pre><code>const open = "Issues";</code></pre>
     </div>
     <div id="mount"></div>
+    <p id="raw-en">Totally untranslated sentence here</p>
     <a id="commit-count" href="/octocat/Hello-World/commits/main">1,234 Commits</a>
     <ul>
       <li><a id="dir-settings" href="/octocat/Hello-World/tree/main/settings">settings</a></li>
@@ -173,6 +174,10 @@ setTimeout(() => {
   setTimeout(() => {
     check('动态节点被翻译', refs.mount.querySelector('a').textContent, '拉取请求');
     check('动态插入的用户内容不翻译', refs.mount.querySelector('.markdown-body p').textContent, 'Open Codespaces');
+
+    const auditList = window.__ghzh.audit();
+    check('审计能列出未覆盖文案', auditList.includes('Totally untranslated sentence here'), true);
+    check('审计不会把已翻译文案算进去', auditList.includes('Issues'), false);
 
     let failed = 0;
     for (const c of checks) {
