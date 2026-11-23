@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.7
+// @version      1.3.8
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2267,6 +2267,19 @@
         '你仍可以随时复刻此仓库并将其取消归档。',
       'will be disabled as part of this action': '将作为此操作的一部分被禁用',
       'to confirm.': '以确认。'
+    },
+    /* ---------- 1.48 仓库通知级别（Watch 菜单） ---------- */
+    '通知级别菜单': {
+      'Participating and @mentions': '参与和 @ 提及',
+      'Only receive notifications from this repository when participating or @mentioned.':
+        '仅当你在此仓库中参与或被 @ 提及时接收通知。',
+      'All Activity': '所有活动',
+      'Notified of all notifications on this repository.': '接收此仓库的所有通知。',
+      'Ignore': '忽略',
+      'Never be notified.': '永不接收通知。',
+      'Custom': '自定义',
+      'Select events you want to be notified of in addition to participating and @mentions.':
+        '选择除参与和 @ 提及之外，你还希望接收通知的事件。'
     }
   };
 

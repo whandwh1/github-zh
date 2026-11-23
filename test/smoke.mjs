@@ -301,6 +301,12 @@ const cases = [
   ['0 branch protection rules', '0 条分支保护规则'],
   ['Make whandwh1/github-zh private', '将 whandwh1/github-zh 设为私有'],
   ['Settings: whandwh1/github-zh', '设置：whandwh1/github-zh'],
+  // 仓库通知级别（Watch 菜单）
+  ['Participating and @mentions', '参与和 @ 提及'],
+  ['All Activity', '所有活动'],
+  ['Notified of all notifications on this repository.', '接收此仓库的所有通知。'],
+  ['Never be notified.', '永不接收通知。'],
+  ['Select events you want to be notified of in addition to participating and @mentions.', '选择除参与和 @ 提及之外，你还希望接收通知的事件。'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
