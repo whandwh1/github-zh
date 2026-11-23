@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.8
+// @version      1.3.9
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2280,6 +2280,33 @@
       'Custom': '自定义',
       'Select events you want to be notified of in addition to participating and @mentions.':
         '选择除参与和 @ 提及之外，你还希望接收通知的事件。'
+    },
+    /* ---------- 1.49 代码页与代码空间 ---------- */
+    '代码页与代码空间': {
+      "You don't have any public SSH keys in your GitHub account.":
+        '你的 GitHub 账号中没有任何公开的 SSH 密钥。',
+      'add a new public key': '添加新的公开密钥',
+      ', or try cloning this repository via HTTPS.': '，或改用 HTTPS 克隆此仓库。',
+      'Use a password-protected SSH key.': '使用受密码保护的 SSH 密钥。',
+      'Clone using the web URL.': '使用网页 URL 克隆。',
+      'Work fast with our official CLI.': '使用我们的官方 CLI 快速操作。',
+      'Your workspaces in the cloud': '你在云中的工作区',
+      'On current branch': '基于当前分支',
+      'New with options...': '使用选项新建…',
+      'New with options…': '使用选项新建…',
+      'Configure dev container': '配置开发容器',
+      'Set up prebuilds': '设置预构建',
+      'Manage codespaces': '管理代码空间',
+      'Share a deep link': '分享深层链接',
+      'What are codespaces?': '什么是代码空间？',
+      'Export changes to a branch': '将更改导出到分支',
+      'Change machine type': '更改机器类型',
+      'Stop codespace': '停止代码空间',
+      'Auto-delete codespace': '自动删除代码空间',
+      'Open in Browser': '在浏览器中打开',
+      'Open in Visual Studio Code': '在 Visual Studio Code 中打开',
+      'Open in JupyterLab': '在 JupyterLab 中打开',
+      'Codespace usage for this repo': '此仓库的代码空间用量'
     }
   };
 

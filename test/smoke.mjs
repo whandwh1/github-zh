@@ -307,6 +307,14 @@ const cases = [
   ['Notified of all notifications on this repository.', '接收此仓库的所有通知。'],
   ['Never be notified.', '永不接收通知。'],
   ['Select events you want to be notified of in addition to participating and @mentions.', '选择除参与和 @ 提及之外，你还希望接收通知的事件。'],
+  // 代码页 / 代码空间
+  ["You don't have any public SSH keys in your GitHub account.", '你的 GitHub 账号中没有任何公开的 SSH 密钥。'],
+  [', or try cloning this repository via HTTPS.', '，或改用 HTTPS 克隆此仓库。'],
+  ['Clone using the web URL.', '使用网页 URL 克隆。'],
+  ['Work fast with our official CLI.', '使用我们的官方 CLI 快速操作。'],
+  ['New with options...', '使用选项新建…'],
+  ['What are codespaces?', '什么是代码空间？'],
+  ['Auto-delete codespace', '自动删除代码空间'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
