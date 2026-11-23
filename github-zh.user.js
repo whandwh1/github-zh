@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.10
+// @version      1.3.11
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2315,6 +2315,13 @@
         '你还没有检出此仓库的代码空间',
       'Learn more about codespaces...': '详细了解代码空间…',
       'Learn more about codespaces…': '详细了解代码空间…'
+    },
+    /* ---------- 1.51 列表（Star 列表弹窗） ---------- */
+    '列表弹窗': {
+      'Add this repository to one or more lists': '将此仓库添加到一个或多个列表',
+      'Filter lists': '筛选列表',
+      'No lists yet': '还没有列表',
+      'Create a list to organize your starred repositories.': '创建列表来整理你已标星的仓库。'
     }
   };
 

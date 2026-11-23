@@ -321,6 +321,11 @@ const cases = [
   ['Create codespace on main', '在 main 上创建代码空间'],
   ['Learn more about codespaces...', '详细了解代码空间…'],
   ['Codespace usage for this repository is paid for by whandwh1.', '此仓库的代码空间用量由 whandwh1 支付。'],
+  // 列表弹窗
+  ['Add this repository to one or more lists', '将此仓库添加到一个或多个列表'],
+  ['Filter lists', '筛选列表'],
+  ['No lists yet', '还没有列表'],
+  ['Create a list to organize your starred repositories.', '创建列表来整理你已标星的仓库。'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
