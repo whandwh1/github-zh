@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.0.6
+// @version      1.0.8
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -188,6 +188,8 @@
       'Reply': '回复',
       'Quote reply': '引用回复',
       'Report': '举报',
+      'Configure': '配置',
+      'Feedback': '反馈',
       'Report content': '举报内容',
       'Block': '屏蔽',
       'Unblock': '取消屏蔽',
@@ -234,6 +236,7 @@
       'Projects': '项目',
       'Wiki': '维基',
       'Insights': '洞察',
+      'Agents': '智能体',
       'Discussions': '讨论',
       'Packages': '包',
       'Releases': '发行版',
@@ -241,6 +244,7 @@
       'Languages': '语言',
       'Activity': '活动',
       'Custom properties': '自定义属性',
+      'Customize environment': '自定义环境',
       'Report repository': '举报仓库',
       'Edit repository details': '编辑仓库详情',
       'Edit repository metadata': '编辑仓库元数据',
@@ -622,7 +626,33 @@
       'Sponsorship log': '赞助日志'
     },
 
-    /* ---------- 1.12 通知 ---------- */
+    /* ---------- 1.12 安全与质量 ---------- */
+    '安全与质量': {
+      'Security and quality': '安全与质量',
+      'Findings': '发现项',
+      'Malware': '恶意软件',
+      'Vulnerabilities': '漏洞',
+      'Reporting': '报告',
+      'Advisories': '安全公告',
+      'Set up a security policy': '设置安全策略',
+      'Define how users should report security vulnerabilities for this repository': '定义用户应如何报告此仓库的安全漏洞',
+      'View security advisories': '查看安全公告',
+      'View or disclose security advisories for this repository': '查看或披露此仓库的安全公告',
+      'Private vulnerability reporting': '私密漏洞报告',
+      'Allow users to privately report potential security vulnerabilities': '允许用户私下报告潜在的安全漏洞',
+      'Enable vulnerability reporting': '启用漏洞报告',
+      'Get notified when one of your dependencies has a vulnerability': '当你的某个依赖存在漏洞时收到通知',
+      'Enable Dependabot alerts': '启用 Dependabot 警报',
+      'Code scanning alerts': '代码扫描警报',
+      'Needs setup': '需要设置',
+      'Automatically detect common vulnerability and coding errors': '自动检测常见的漏洞和编码错误',
+      'Set up code scanning': '设置代码扫描',
+      'Secret scanning alerts': '机密扫描警报',
+      'Get notified when a secret is pushed to this repository': '当有机密被推送到此仓库时收到通知',
+      'View detected secrets': '查看检测到的机密'
+    },
+
+    /* ---------- 1.13 通知 ---------- */
     '通知': {
       'Inbox': '收件箱',
       'Saved': '已保存',
@@ -885,6 +915,7 @@
 
   function normalize(s) {
     return String(s)
+      .replace(/[\u200b-\u200d\ufeff]/g, '')
       .replace(/[\u2018\u2019]/g, "'")
       .replace(/[\u201c\u201d]/g, '"')
       .replace(/\u00a0/g, ' ')
@@ -911,6 +942,15 @@
 
     let out = DICT.get(norm);
     if (out === undefined) out = DICT.get(norm.toLowerCase());
+
+    // 兼容「标题 + 分隔符」粘在同一个文本节点的写法，如 "Security policy ·"
+    if (out === undefined) {
+      const core = norm.replace(/\s*[·•|]\s*$/, '');
+      if (core !== norm && core) {
+        const hit = DICT.get(core) || DICT.get(core.toLowerCase());
+        if (typeof hit === 'string') out = hit + norm.slice(core.length);
+      }
+    }
 
     if (out === undefined) {
       for (let i = 0; i < RULES.length; i++) {
