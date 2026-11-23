@@ -276,6 +276,13 @@ const cases = [
   // PR 收件箱分组：复数所有格
   ["Needs your teams' review", '需要你团队评审'],
   ['Needs your team\u2019s review', '需要你团队评审'],
+  // 新建仓库页
+  ['Choose who can see and commit to this repository', '选择谁可以看到并提交到此仓库'],
+  ['Repositories contain a project\'s files and version history.', '仓库包含项目的文件和版本历史。'],
+  ['.gitignore tells git which files not to track.', '.gitignore 告诉 Git 哪些文件不需要跟踪。'],
+  ['Import a repository', '导入仓库'],
+  ['(required)', '（必填）'],
+  ['characters', '个字符'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

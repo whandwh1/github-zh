@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.4
+// @version      1.3.5
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2059,6 +2059,29 @@
       'Enable all grouped security updates': '启用所有分组安全更新',
       'Enable all private vulnerability reporting': '启用所有私密漏洞报告',
       'User': '用户'
+    },
+    /* ---------- 1.45 新建仓库 ---------- */
+    '新建仓库': {
+      '(required)': '（必填）',
+      '.gitignore tells git which files not to track.': '.gitignore 告诉 Git 哪些文件不需要跟踪。',
+      'About READMEs': '关于 README',
+      'About ignoring files': '关于忽略文件',
+      'About licenses': '关于许可证',
+      'Add README': '添加 README',
+      'Add license': '添加许可证',
+      'Choose visibility': '选择可见性',
+      'Choose who can see and commit to this repository': '选择谁可以看到并提交到此仓库',
+      'Configuration': '配置',
+      'Great repository names are short and memorable. How about': '好的仓库名简短易记。不如试试',
+      'Have a project elsewhere?': '已有项目在别处？',
+      'Import a repository': '导入仓库',
+      'Licenses explain how others can use your code.': '许可证说明他人可以如何使用你的代码。',
+      'No .gitignore': '不使用 .gitignore',
+      'No license': '不使用许可证',
+      'READMEs can be used as longer descriptions.': 'README 可用作更长的描述。',
+      "Repositories contain a project's files and version history.": '仓库包含项目的文件和版本历史。',
+      'Repository owner and name': '仓库所有者和名称',
+      'characters': '个字符'
     }
   };
 
