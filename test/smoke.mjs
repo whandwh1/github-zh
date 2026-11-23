@@ -289,6 +289,18 @@ const cases = [
   ['Can be sponsored', '可接受赞助'],
   ['Recently starred', '最近标星'],
   ['Sort by: Recently starred', '排序：最近标星'],
+  // 仓库设置·常规
+  ['Allow squash merging', '允许压缩合并'],
+  ['Automatically delete head branches', '自动删除头分支'],
+  ['Default branch', '默认分支'],
+  ['Discussions is the space for your community to have conversations, ask questions and post answers without opening issues.', '讨论是让你的社区无需创建议题即可交流、提问和发布回答的空间。'],
+  ['Images should be at least 640\u00d7320px (1280\u00d7640px for best display).', '图片至少应为 640\u00d7320 像素（1280\u00d7640 像素显示效果最佳）。'],
+  ['Once you delete a repository, there is no going back. Please be certain.', '仓库一旦删除将无法恢复。请确认无误。'],
+  ['Upload an image\u2026', '上传图片\u2026'],
+  // 带 owner/repo 的动态标题
+  ['0 branch protection rules', '0 条分支保护规则'],
+  ['Make whandwh1/github-zh private', '将 whandwh1/github-zh 设为私有'],
+  ['Settings: whandwh1/github-zh', '设置：whandwh1/github-zh'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

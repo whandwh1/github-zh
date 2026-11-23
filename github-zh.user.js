@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.6
+// @version      1.3.7
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2096,6 +2096,177 @@
       'Sort by: Most stars': '排序：星标最多',
       'Sort by: Recently starred': '排序：最近标星',
       'Sort by: Recently active': '排序：最近活跃'
+    },
+    /* ---------- 1.47 仓库设置·常规 ---------- */
+    '仓库设置·常规': {
+      '. Existing commit comments are not affected by this setting and will remain viewable, editable, and deletable.':
+        '。现有提交评论不受此设置影响，仍可查看、编辑和删除。',
+      'Add all commits from the head branch onto the base branch individually.':
+        '将头分支的所有提交逐个添加到基础分支。',
+      'Add all commits from the head branch to the base branch with a merge commit.':
+        '使用合并提交将头分支的所有提交添加到基础分支。',
+      'Add links to GitHub Sponsors or third-party methods your repository accepts for financial contributions to your project.':
+        '添加指向 GitHub 赞助或你的仓库所接受的其他第三方资助方式的链接。',
+      'After merging a pull request, linked issues can be closed automatically.':
+        '合并拉取请求后，可以自动关闭关联的议题。',
+      'After pull requests are merged, you can have head branches deleted automatically.':
+        '拉取请求合并后，可以自动删除头分支。',
+      'Agent suggestions for issues': '议题的智能体建议',
+      'All scheduled workflows will stop running.': '所有定时工作流都将停止运行。',
+      'All users': '所有用户',
+      'Allow auto-merge': '允许自动合并',
+      'Allow comments on individual commits': '允许对单个提交发表评论',
+      'Allow merge commits': '允许合并提交',
+      'Allow rebase merging': '允许变基合并',
+      'Allow squash merging': '允许压缩合并',
+      'Always suggest updating pull request branches': '始终建议更新拉取请求分支',
+      'Anyone can create a pull request': '任何人都可以创建拉取请求',
+      'Anyone can create an issue': '任何人都可以创建议题',
+      'Archive repository': '归档仓库',
+      'Auto-close issues with merged linked pull requests': '关联拉取请求合并后自动关闭议题',
+      'Automatically delete head branches': '自动删除头分支',
+      'Before you archive, please consider:': '归档前，请考虑：',
+      'Branch protection rule APIs': '分支保护规则 API',
+      'Branch protection rule enforcement': '分支保护规则强制执行',
+      'Change to private': '更改为私有',
+      'Change visibility': '更改可见性',
+      'Closing all open issues and pull requests': '关闭所有打开的议题和拉取请求',
+      'Code review': '代码评审',
+      'Code scanning will be paused': '代码扫描将暂停',
+      'Collaborators only': '仅协作者',
+      'Combine all commits from the head branch into a single commit in the base branch.':
+        '将头分支的所有提交压缩为基础分支中的单个提交。',
+      'Control how and when users are prompted to update their branches if there are new changes available in the base branch.':
+        '控制当基础分支存在新变更时，以何种方式、何时提示用户更新其分支。',
+      'Creation allowed by:': '允许创建者：',
+      'Default branch': '默认分支',
+      'Default commit message': '默认提交信息',
+      'Default message': '默认信息',
+      'Deleted branches will still be able to be restored.': '已删除的分支仍可以恢复。',
+      'Deploy keys': '部署密钥',
+      'Developer Certificate of Origin (DCO)': '开发者原产地证书（DCO）',
+      'Disable branch protection rules': '禁用分支保护规则',
+      'Disable branch protection rules enforcement and APIs':
+        '禁用分支保护规则的强制执行和 API',
+      'Disabling branch protection rules allows you to enforce branch and tag protections exclusively with Repository Rules.':
+        '禁用分支保护规则后，你可以仅通过仓库规则来强制执行分支和标签保护。',
+      'Disallow assets and tags from being modified once a release is published.':
+        '禁止在发行版发布后修改其资产和标签。',
+      'Discussions is the space for your community to have conversations, ask questions and post answers without opening issues.':
+        '讨论是让你的社区无需创建议题即可交流、提问和发布回答的空间。',
+      'Display a "Sponsor" button': '显示“赞助”按钮',
+      'Download template': '下载模板',
+      'Dreaming': '构思中',
+      'Enable release immutability': '启用发行版不可变性',
+      'Enabling this setting will allow anyone who can view this repository to add':
+        '启用此设置后，任何能查看此仓库的人都可以添加',
+      'Engage your community by having discussions right in your repository, where your community already lives':
+        '在社区已经聚集的仓库里直接开展讨论，从而提升社区参与度',
+      'Environments': '环境',
+      'Get organized with issue templates': '用议题模板让协作更有条理',
+      'Get started with Discussions': '开始使用讨论',
+      'Git LFS usage in archives is billed at the same rate as usage with the client.':
+        '归档中的 Git LFS 用量按与客户端用量相同的费率计费。',
+      'GitHub Archive Program': 'GitHub 存档计划',
+      'Give contributors issue templates that help you cut through the noise and help them push your project forward.':
+        '为贡献者提供议题模板，帮你过滤噪音，也帮助他们推动项目前进。',
+      'I understand the consequences, archive this repository': '我了解后果，归档此仓库',
+      'I want to delete this repository': '我想删除此仓库',
+      'I want to make this repository private': '我想将此仓库设为私有',
+      'If restricted, issues will still be readable by everyone who can see this repository.':
+        '若受限，议题仍可被所有能查看此仓库的人阅读。',
+      'If restricted, pull requests will still be readable by everyone who can see this repository.':
+        '若受限，拉取请求仍可被所有能查看此仓库的人阅读。',
+      'Images should be at least 640×320px (1280×640px for best display).':
+        '图片至少应为 640×320 像素（1280×640 像素显示效果最佳）。',
+      'Include Git LFS objects in archives': '在归档中包含 Git LFS 对象',
+      'Include this code in the': '将此代码包含在',
+      'Internet access': '互联网访问',
+      'Issue permissions': '议题权限',
+      'Issues integrate lightweight task tracking into your repository. Keep projects on track with issue labels and milestones, and reference them in commit messages.':
+        '议题为你的仓库带来轻量级任务跟踪。用议题标签和里程碑让项目保持正轨，并在提交信息中引用它们。',
+      'Learn more about signing off on commits': '详细了解如何为提交签署确认',
+      'Learn more about template repositories': '详细了解模板仓库',
+      'Learn more about this setting': '详细了解此设置',
+      'Limit how many branches and tags can be updated in a single push':
+        '限制单次推送可更新的分支和标签数量',
+      'MCP servers': 'MCP 服务器',
+      'Making a note in your README': '在你的 README 中做说明',
+      'Mark this repository as archived and read-only.': '将此仓库标记为已归档且只读。',
+      'Once you delete a repository, there is no going back. Please be certain.':
+        '仓库一旦删除将无法恢复。请确认无误。',
+      'Only collaborators can create PRs': '仅协作者可以创建 PR',
+      'Only collaborators can create issues': '仅协作者可以创建议题',
+      'Please type': '请输入',
+      'Policies': '策略',
+      'Policy insights': '策略洞察',
+      'Presented when merging a pull request with merge.': '使用合并方式合并拉取请求时显示。',
+      'Presented when merging a pull request with squash.': '使用压缩方式合并拉取请求时显示。',
+      'Preserve this repository': '保留此仓库',
+      'Public wikis will still be readable by everyone.': '公开 wiki 仍可被所有人阅读。',
+      'Pull request permissions': '拉取请求权限',
+      'Pull request title': '拉取请求标题',
+      'Pull request title and commit details': '拉取请求标题和提交详情',
+      'Pull request title and description': '拉取请求标题和描述',
+      'Pull requests allow others to suggest changes to your repository.':
+        '拉取请求让他人可以为你的仓库提出更改建议。',
+      'Pushes': '推送',
+      'Pushes will be rejected if they attempt to update more than this.':
+        '若推送尝试更新超过此数量，将被拒绝。',
+      'Remove image': '移除图片',
+      'Rename': '重命名',
+      'Rename branch': '重命名分支',
+      'Rename this branch': '重命名此分支',
+      'Repository navigation': '仓库导航',
+      'Require contributors to sign off on web-based commits':
+        '要求贡献者对基于网页的提交进行签署',
+      'Restrict editing to collaborators only': '仅限协作者编辑',
+      'Rulesets': '规则集',
+      'Runners': '运行器',
+      'Security features will be interrupted:': '安全功能将中断：',
+      'Set up sponsor button': '设置赞助按钮',
+      'Set up templates': '设置模板',
+      'Social preview': '社交预览',
+      'Sponsorships help your community know how to financially support this repository.':
+        '赞助可让你的社区了解如何为该仓库提供资金支持。',
+      'Switch repository': '切换仓库',
+      'Template repositories let users generate new repositories with the same directory structure and files.':
+        '模板仓库让用户能生成具有相同目录结构和文件的新仓库。',
+      'Template repository': '模板仓库',
+      'The default branch is considered the "base" branch in your repository, against which all pull requests and code commits are automatically made, unless you specify a different branch.':
+        '默认分支被视为仓库的“基础”分支，所有拉取请求和代码提交默认都以它为基准，除非你指定其他分支。',
+      'This action will disable:': '此操作将禁用：',
+      'This repository is currently public.': '此仓库当前为公开。',
+      'This repository will become read-only.': '此仓库将变为只读。',
+      'This will hide the branch protection settings and disable branch protection rules for this repository.':
+        '这会隐藏此仓库的分支保护设置，并禁用分支保护规则。',
+      'Transfer': '转移',
+      'Transfer this repository to another user or to an organization where you have the ability to create repositories.':
+        '将此仓库转移给其他用户，或转移到你有权创建仓库的组织。',
+      'Up to': '最多',
+      'Updating any repository settings': '更新任何仓库设置',
+      "Upload an image to customize your repository's social media preview.":
+        '上传图片以自定义仓库的社交媒体预览。',
+      'Upload an image…': '上传图片…',
+      'Uploading...': '上传中…',
+      'Waits for merge requirements to be met and then merges automatically.':
+        '等待满足合并要求后自动合并。',
+      'When creating source code archives, you can choose to include files stored using Git LFS in the archive.':
+        '创建源代码归档时，你可以选择将使用 Git LFS 存储的文件包含在归档中。',
+      'Whenever linked pull requests have merged, auto-close the issue.':
+        '当关联的拉取请求合并后，自动关闭议题。',
+      'Whenever there are new changes available in the base branch, present an "update branch" option in the pull request.':
+        '当基础分支有新变更时，在拉取请求中显示“更新分支”选项。',
+      'Wikis host documentation for your repository.': 'Wiki 用于托管仓库的文档。',
+      'You can allow setting pull requests to merge automatically once all required reviews and status checks have passed.':
+        '你可以允许在通过所有必需的评审和状态检查后自动合并拉取请求。',
+      'You must select at least one option': '你必须至少选择一项',
+      'You must select squashing or rebasing option. This is because linear history is required on at least one protected branch.':
+        '你必须选择压缩或变基选项，因为至少有一个受保护分支要求线性历史。',
+      'You will still be able to fork the repository and unarchive it at any time.':
+        '你仍可以随时复刻此仓库并将其取消归档。',
+      'will be disabled as part of this action': '将作为此操作的一部分被禁用',
+      'to confirm.': '以确认。'
     }
   };
 
@@ -2252,6 +2423,12 @@
 
     /* ---- PR 收件箱分组：单数/复数所有格都覆盖 ---- */
     [/^Needs your teams?' review$/i, '需要你团队评审'],
+
+    /* ---- 仓库设置里带 owner/repo 的标题 ---- */
+    [/^Delete ([\w.-]+\/[\w.-]+)$/, '删除 $1'],
+    [/^Make ([\w.-]+\/[\w.-]+) private$/, '将 $1 设为私有'],
+    [/^Settings: ([\w.-]+\/[\w.-]+)$/, '设置：$1'],
+    [/^(\d+) branch protection rules?$/i, '$1 条分支保护规则'],
 
     /* ---- 仓库卡片计数："940 stars in owner/repo" ---- */
     [
