@@ -283,6 +283,12 @@ const cases = [
   ['Import a repository', '导入仓库'],
   ['(required)', '（必填）'],
   ['characters', '个字符'],
+  // 仓库筛选/排序下拉
+  ['Type:', '类型：'],
+  ['Sources', '源仓库'],
+  ['Can be sponsored', '可接受赞助'],
+  ['Recently starred', '最近标星'],
+  ['Sort by: Recently starred', '排序：最近标星'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
