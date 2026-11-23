@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.0
+// @version      1.3.1
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -1596,6 +1596,175 @@
       'Pushes that contain secrets will not be blocked.': '包含机密的推送将不会被阻止。',
       'Allow your community to privately report potential security vulnerabilities to maintainers and repository owners.':
         '允许社区私下向维护者和仓库所有者报告潜在的安全漏洞。'
+    },
+    /* ---------- 1.34 设置·账单 ---------- */
+    '设置·账单': {
+      'Amounts shown in USD': '金额以美元计',
+      'You have not made any payments.': '你还没有任何付款记录。',
+      'You have not added a payment method.': '你还没有添加支付方式。',
+      'Add billing information': '添加账单信息',
+      'Save billing information': '保存账单信息',
+      'Save contact information': '保存联系信息',
+      'Additional information': '其他信息',
+      'Extra billing information': '其他账单信息',
+      'Full business name or address of record': '登记的企业全称或地址',
+      'This information will appear on all your receipts.': '此信息会出现在你的所有收据上。',
+      'For your security, do not include any confidential or financial information (like credit card numbers).':
+        '为了安全，请勿填写任何机密或财务信息（如信用卡号）。',
+      'Required for certain countries': '部分国家必填',
+      'VAT/GST ID': '增值税/GST 税号',
+      'Postal/Zip code': '邮政编码',
+      '(9-digit zip code for US)': '（美国为 9 位邮编）',
+      'Select state': '选择州',
+      'Select province': '选择省',
+      'Credit or debit card': '信用卡或借记卡',
+      'Pay with': '支付方式',
+      'PayPal account': 'PayPal 账户',
+      'Credit Card Form': '信用卡表单',
+      'Prepaid debit and credit cards are not accepted as a valid form of payment.':
+        '不接受预付借记卡和信用卡作为有效支付方式。',
+      'Manage subscriptions': '管理订阅',
+      'Next payment due': '下次付款日期',
+      'Active subscription': '有效订阅',
+      'Current GitHub base plan': '当前 GitHub 基础套餐',
+      'Upgrade Individual Plan': '升级个人套餐',
+      'Upgrade to Business': '升级到商业版',
+      'Upgrade to GitHub Pro': '升级到 GitHub Pro',
+      'Compare base plans': '对比基础套餐',
+      'See all features and compare plans': '查看所有功能并对比套餐',
+      'Redeem a coupon': '兑换优惠券',
+      'Coupon': '优惠券',
+      "You don't have an active coupon.": '你没有有效的优惠券。',
+      'Current included usage': '当前包含用量',
+      'Current metered usage': '当前按量用量',
+      'Additional usage': '额外用量',
+      'Metered usage': '按量用量',
+      'Billed amount': '计费金额',
+      'Gross amount': '总额',
+      'Spent': '已花费',
+      'Usage breakdown': '用量明细',
+      'Usage by products': '按产品统计的用量',
+      'Usage by repository': '按仓库统计的用量',
+      'Get usage report': '获取用量报告',
+      'Search or filter usage': '搜索或筛选用量',
+      'Show Usage': '显示用量',
+      'Show Usage Breakdown': '显示用量明细',
+      'No usage': '无用量',
+      'No usage data found for the selected filters.': '所选筛选条件下没有用量数据。',
+      'Timeframe: Current month': '时间范围：本月',
+      'Group by: None': '分组方式：无',
+      'Scope:': '范围：',
+      'Chart options': '图表选项',
+      'Chart view': '图表视图',
+      'Interactive chart': '交互式图表',
+      'Loading usage data...': '正在加载用量数据…',
+      'Loading budgets': '正在加载预算',
+      'Loading payment information…': '正在加载支付信息…',
+      'Budget': '预算',
+      'Budgets': '预算',
+      'New budget': '新建预算',
+      'Included usage alerts:': '包含用量提醒：',
+      'Advanced Security': '高级安全',
+      'Pages for static website hosting': '用于静态网站托管的 Pages',
+      'You can upgrade to Copilot Pro at any time. Check out this': '你可以随时升级到 Copilot Pro。查看这个',
+      'for more details.': '了解更多详情。'
+    },
+
+    /* ---------- 1.35 设置·教育 ---------- */
+    '设置·教育': {
+      'GitHub Education': 'GitHub Education',
+      'Education Benefits Application': '教育权益申请',
+      'Free GitHub developer resources for students and teachers': '面向学生和教师的免费 GitHub 开发者资源',
+      'Complete a teacher or student application to unlock tools and resources for your educational journey.':
+        '完成教师或学生申请，解锁学习旅程中的工具与资源。',
+      'Start an application': '开始申请',
+      'Sponsorships': '赞助',
+      'Start sponsoring': '开始赞助',
+      "You're currently not sponsoring anyone.": '你目前没有赞助任何人。',
+      'Learn more about GitHub Sponsors': '详细了解 GitHub Sponsors',
+      'Connect with the community that builds the tools you use': '与你所用工具的构建社区建立联系',
+      'Learn more about organizations': '详细了解组织',
+      'Start your first organization': '创建你的第一个组织',
+      'Create an organization': '创建组织',
+      'Gathering available school information...': '正在获取可用的学校信息…'
+    },
+
+    /* ---------- 1.36 设置·审计与赞助日志 ---------- */
+    '设置·日志': {
+      'Filter audit logs': '筛选审计日志',
+      'Filter by Action': '按操作筛选',
+      'Filter by Member': '按成员筛选',
+      'Search audit logs': '搜索审计日志',
+      'Export': '导出',
+      'Exporting': '正在导出',
+      'Newer': '较新',
+      'Older': '较早',
+      'Recent events': '最近事件',
+      "Yesterday's activity": '昨天的活动',
+      'Show more details': '显示更多详情',
+      'View advanced search syntax': '查看高级搜索语法',
+      'Loading audit log entries…': '正在加载审计日志…',
+      'Too many exports in progress. Please try again later.': '正在进行的导出过多，请稍后再试。',
+      'Something went wrong.': '出错了。',
+      'All-time': '全部时间',
+      'Past day': '过去 24 小时',
+      'Past week': '过去一周',
+      'Past month': '过去一个月',
+      'Past year': '过去一年',
+      'Period:': '时间段：',
+      'Filter activity': '筛选活动',
+      'New sponsorships, changes, and cancellations': '新增赞助、变更与取消',
+      'No sponsorship activity in this time period': '此时间段内没有赞助活动',
+      'This is where you can review activity from your sponsorships.': '你可以在这里查看赞助相关的活动。',
+      'items': '项'
+    },
+
+    /* ---------- 1.37 设置·安全分析（补充） ---------- */
+    '设置·安全分析补充': {
+      'Dependabot on self-hosted runners': '在自托管运行器上运行 Dependabot',
+      'Run Dependabot security and version updates on self-hosted Actions runners.':
+        '在自托管的 Actions 运行器上运行 Dependabot 安全与版本更新。',
+      'Learn how to group updates.': '了解如何对更新分组。',
+      'Security and analysis features help keep you secure and updated, wherever you are.':
+        '无论你在哪里，安全与分析功能都能帮助你保持安全与更新。',
+      'Disable all Dependabot alerts': '禁用所有 Dependabot 警报',
+      'Disable all Dependabot security updates': '禁用所有 Dependabot 安全更新',
+      'Disable all grouped security updates': '禁用所有分组安全更新',
+      'Disable all dependency graph': '禁用所有依赖关系图',
+      'Disable all private vulnerability reporting': '禁用所有私密漏洞报告',
+      'Disable push protection': '禁用推送保护',
+      'Disable push protection for yourself': '为你自己禁用推送保护',
+      "You're about to disable Dependabot security updates on all your repositories.":
+        '你即将在所有仓库上禁用 Dependabot 安全更新。',
+      "You're about to disable grouped security updates on all your repositories.":
+        '你即将在所有仓库上禁用分组安全更新。',
+      "You're about to disable private vulnerability reporting on all public repositories in whandwh1.":
+        '你即将在 whandwh1 的所有公开仓库上禁用私密漏洞报告。',
+      "You're about to enable dependency graph on all your private repositories.":
+        '你即将在所有私有仓库上启用依赖关系图。',
+      "You're about to enable private vulnerability reporting on all public repositories in whandwh1.":
+        '你即将在 whandwh1 的所有公开仓库上启用私密漏洞报告。',
+      'across all public repositories on GitHub.': '覆盖 GitHub 上的所有公开仓库。'
+    },
+
+    /* ---------- 1.38 设置·Copilot（补充） ---------- */
+    '设置·Copilot补充': {
+      'GitHub Copilot for assistance in GitHub Desktop': 'GitHub Desktop 中的 GitHub Copilot 辅助',
+      'GitHub Copilot for assistance in terminal': '终端中的 GitHub Copilot 辅助',
+      'Learn more about Copilot in GitHub.com': '详细了解 GitHub.com 上的 Copilot',
+      'Learn more about Copilot-generated commit messages.': '详细了解 Copilot 生成的提交信息。',
+      'You can use Copilot Chat in GitHub.com. Preview features are only available for paid licenses.':
+        '你可以在 GitHub.com 上使用 Copilot 对话。预览功能仅对付费许可证开放。',
+      'This setting installs your dotfiles in environments created by Copilot in the cloud and Codespaces.':
+        '此设置会在云端 Copilot 和代码空间创建的环境中安装你的 dotfiles。',
+      'Copilot can allow or block suggestions matching public code. Learn more about':
+        'Copilot 可以允许或阻止匹配公开代码的建议。详细了解',
+      'Copilot can answer questions about new trends and give improved answers, via Bing. See':
+        'Copilot 可通过 Bing 回答新趋势相关的问题并给出更好的答案。参见',
+      'Microsoft Privacy Statement': 'Microsoft 隐私声明',
+      'For more information about the data your organization receives regarding your use of GitHub Copilot, please review':
+        '有关组织收到的你使用 GitHub Copilot 的数据的更多信息，请查看',
+      'You do not belong to any organizations.': '你不属于任何组织。'
     }
   };
 
@@ -2357,14 +2526,23 @@
         const summary = {};
         let total = 0;
 
+        let stale = 0;
         Object.keys(db).sort().forEach(function (key) {
-          const list = Object.keys(db[key]).sort();
+          const all = Object.keys(db[key]);
+          // 只保留「当前版本仍未覆盖」的，历史记录自动过滤掉
+          const list = all
+            .filter(function (s) {
+              return translateString(s) === null;
+            })
+            .sort();
+          stale += all.length - list.length;
           if (!list.length) return;
           summary[key] = list;
           total += list.length;
         });
 
         console.log('[ghzh] 未翻译汇总：' + total + ' 条，来自 ' + Object.keys(summary).length + ' 个页面');
+        if (stale) console.log('[ghzh] 已自动过滤 ' + stale + ' 条旧记录（已被当前词库覆盖）');
 
         if (!total) {
           const tip = '暂无记录。请先在设置里打开几个子页面（脚本会自动记录没翻到的英文），再回来导出。';
