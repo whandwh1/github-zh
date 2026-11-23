@@ -205,6 +205,18 @@ const cases = [
   ['My repositories', '我的仓库'],
   ['My forks', '我的复刻'],
   ['Admin access', '管理权限'],
+  // 导入项目页
+  ['Import your project to GitHub', '将你的项目导入 GitHub'],
+  ['Your source repository details', '源仓库详情'],
+  ['Your new repository details', '新仓库详情'],
+  ['The URL for your source repository', '源仓库的 URL'],
+  ['importing git repositories', '导入 git 仓库'],
+  ['Your access token or password for your source repository', '源仓库的访问令牌或密码'],
+  ['Required fields are marked with an asterisk (*).', '必填字段用星号（*）标记。'],
+  [
+    'Support for importing Mercurial, Subversion and Team Foundation Version Control (TFVC) repositories ended on April 12, 2024. For more details, see the changelog.',
+    '对 Mercurial、Subversion 和 Team Foundation Version Control（TFVC）仓库的导入支持已于 2024 年 4 月 12 日结束。详情请参阅更新日志。'
+  ],
   // 议题看板筛选
   ['Assigned to me', '指派给我的'],
   ['Created by me', '我创建的'],

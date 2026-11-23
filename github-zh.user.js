@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.1.2
+// @version      1.1.3
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -30,7 +30,7 @@
 
   const STORE_KEY = 'ghzh:enabled';
   const CJK_RE = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3040-\u30ff]/;
-  const MAX_LEN = 150; // 超过这个长度的文本多半是用户内容，不翻译
+  const MAX_LEN = 200; // 超过这个长度的文本多半是用户内容，不翻译
 
   function readFlag() {
     try {
@@ -722,6 +722,25 @@
       'Create': '创建',
       'Delete repository': '删除仓库',
       'Add a title': '添加标题',
+      'Import your project to GitHub': '将你的项目导入 GitHub',
+      'Import all the files, including revision history, from another version control system.':
+        '从其他版本控制系统导入所有文件，包括修订历史。',
+      'Required fields are marked with an asterisk (*).': '必填字段用星号（*）标记。',
+      'Support for importing Mercurial, Subversion and Team Foundation Version Control (TFVC) repositories ended on April 12, 2024. For more details, see the changelog.':
+        '对 Mercurial、Subversion 和 Team Foundation Version Control（TFVC）仓库的导入支持已于 2024 年 4 月 12 日结束。详情请参阅更新日志。',
+      'Support for importing Mercurial, Subversion and Team Foundation Version Control (TFVC) repositories ended on April 12, 2024. For more details, see the':
+        '对 Mercurial、Subversion 和 Team Foundation Version Control（TFVC）仓库的导入支持已于 2024 年 4 月 12 日结束。详情请参阅',
+      'Your source repository details': '源仓库详情',
+      'The URL for your source repository': '源仓库的 URL',
+      'The URL for your source repository *': '源仓库的 URL *',
+      'Learn more about': '详细了解',
+      'importing git repositories': '导入 git 仓库',
+      'Please enter your credentials if required for cloning your remote repository.':
+        '如果克隆远程仓库需要凭据，请在此填写。',
+      'Your username for your source repository': '源仓库的用户名',
+      'Your access token or password for your source repository': '源仓库的访问令牌或密码',
+      'Your new repository details': '新仓库详情',
+      'changelog': '更新日志',
       'Add a description': '添加描述',
       'Write a comment': '写下评论',
       'Leave a comment': '留下评论',

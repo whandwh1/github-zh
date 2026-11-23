@@ -3,9 +3,9 @@
 一个给 **Tampermonkey / Violentmonkey（油猴）** 用的 GitHub 界面汉化脚本：把 GitHub 上的英文界面换成简体中文，同时**绝不碰你的 README、代码、提交信息和仓库名**。
 
 - 脚本文件：`github-zh.user.js`
-- 版本：1.1.2
+- 版本：1.1.3
 - 适用范围：`github.com`、`gist.github.com`
-- 词库：23 个分组、879 条词条，另有 20+ 条正则规则处理时间、数量、短句
+- 词库：23 个分组、894 条词条，另有 20+ 条正则规则处理时间、数量、短句
 
 ## 效果示例
 
@@ -121,7 +121,7 @@ GitHub 页面上大量文本是**用户内容**——README、issue 正文、评
 
 1. **整段精确匹配**：文本节点去掉首尾空白后，与词库或规则**完全相等**才翻译。
 2. **主动跳过用户区域**：`.markdown-body`、`pre/code`、`.blob-code`、CodeMirror、`.commit-message`、`[data-hovercard-type=repository]`（仓库名）、`itemprop=name`（用户名）、`contenteditable`，以及指向具体内容的链接（`/blob/`、`/tree/`、`/commit/`、`/issues/123` 这类带数字 ID 的详情页）。
-3. **长得像代码/路径的不碰**：长度 > 150 字符、包含中文、匹配 `owner/repo` 形态的字符串直接放行。
+3. **长得像代码/路径的不碰**：长度 > 200 字符、包含中文、匹配 `owner/repo` 形态的字符串直接放行。
 
 > 链接过滤只认数字 ID：`/issues/assigned` 是筛选项、要翻译，`/issues/123` 是议题标题、要放过。
 
