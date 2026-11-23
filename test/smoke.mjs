@@ -222,6 +222,18 @@ const cases = [
   ['Created by me', '我创建的'],
   ['Mentioning me', '提及我的'],
   ['Recently updated', '最近更新'],
+  // 设置页真实文案（来自缺漏报告）
+  ['Breadcrumbs', '面包屑导航'],
+  ['Dark theme', '深色主题'],
+  ['You signed out in another tab or window.', '你在另一个标签页或窗口中退出了登录。'],
+  ['Issue types', '议题类型'],
+  ['You have no unread notifications', '你没有未读通知'],
+  ['4 (Default)', '4（默认）'],
+  ['0 keys', '0 个密钥'],
+  ['3 GitHub Apps', '3 个 GitHub App'],
+  ['0% used', '已用 0%'],
+  ['250 characters remaining.', '还可输入 250 个字符。'],
+  ['1 verified email configured', '已配置 1 个已验证邮箱'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
