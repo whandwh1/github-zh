@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.1.3
+// @version      1.2.0
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -29,6 +29,7 @@
    * ============================================================ */
 
   const STORE_KEY = 'ghzh:enabled';
+  const GAP_KEY = 'ghzh:gaps'; // 跨页面累计的「未覆盖文案」
   const CJK_RE = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3040-\u30ff]/;
   const MAX_LEN = 200; // 超过这个长度的文本多半是用户内容，不翻译
 
@@ -1198,6 +1199,53 @@
       .trim();
   }
 
+  /* ---------- 3.1 未覆盖文案的跨页面收集 ---------- */
+
+  function pageKey() {
+    if (typeof location === 'undefined' || !location.pathname) return '/';
+    const parts = location.pathname.split('/').filter(Boolean);
+    return '/' + parts.slice(0, 2).join('/');
+  }
+
+  let gapBuf = new Set();
+  let gapTimer = null;
+
+  function flushGaps() {
+    gapTimer = null;
+    if (!gapBuf.size) return;
+    try {
+      const raw = localStorage.getItem(GAP_KEY);
+      const db = raw ? JSON.parse(raw) : {};
+      const key = pageKey();
+      const bucket = db[key] || {};
+      gapBuf.forEach(function (t) {
+        if (Object.keys(bucket).length < 400 && !bucket[t]) bucket[t] = 1;
+      });
+      db[key] = bucket;
+      localStorage.setItem(GAP_KEY, JSON.stringify(db));
+    } catch (err) {
+      /* 隐私模式下 localStorage 可能不可用 */
+    }
+    gapBuf = new Set();
+  }
+
+  /** 记下一条「英文但没翻译」的文案，稍后批量写入 localStorage */
+  function noteGap(text) {
+    if (!text || text.length > 120) return;
+    gapBuf.add(text);
+    if (gapTimer) return;
+    gapTimer = setTimeout(flushGaps, 1500);
+  }
+
+  function readGaps() {
+    try {
+      const raw = localStorage.getItem(GAP_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (err) {
+      return {};
+    }
+  }
+
   function translateString(raw) {
     if (!raw) return null;
 
@@ -1239,7 +1287,10 @@
       }
     }
 
-    if (typeof out !== 'string' || !out || out === norm) return null;
+    if (typeof out !== 'string' || !out || out === norm) {
+      noteGap(norm);
+      return null;
+    }
     return lead + out + tail;
   }
 
@@ -1550,6 +1601,21 @@
         alert('请先开启汉化（脚本当前处于暂停状态）。');
       }
     });
+
+    GM_registerMenuCommand('导出未翻译汇总（跨页面，复制到剪贴板）', function () {
+      if (window.__ghzh && window.__ghzh.report) {
+        window.__ghzh.report();
+      } else {
+        alert('请先开启汉化（脚本当前处于暂停状态）。');
+      }
+    });
+
+    GM_registerMenuCommand('清空未翻译汇总', function () {
+      if (window.__ghzh && window.__ghzh.clearGaps) {
+        window.__ghzh.clearGaps();
+        console.log('[ghzh] 已清空未翻译汇总');
+      }
+    });
   }
 
   /* ============================================================
@@ -1623,6 +1689,49 @@
         }
 
         return list;
+      },
+      /**
+       * 汇总所有访问过的页面里「没翻译」的文案，按页面路径分组。
+       * 用法：__ghzh.report()，结果打印到控制台并复制到剪贴板。
+       */
+      report: function () {
+        flushGaps();
+        const db = readGaps();
+        const summary = {};
+        let total = 0;
+
+        Object.keys(db).sort().forEach(function (key) {
+          const list = Object.keys(db[key]).sort();
+          if (!list.length) return;
+          summary[key] = list;
+          total += list.length;
+        });
+
+        console.log('[ghzh] 未翻译汇总：' + total + ' 条，来自 ' + Object.keys(summary).length + ' 个页面');
+        Object.keys(summary).forEach(function (key) {
+          console.log('\n' + key + '（' + summary[key].length + ' 条）');
+          summary[key].forEach(function (s, i) {
+            console.log('  ' + (i + 1) + '. ' + s);
+          });
+        });
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(JSON.stringify(summary, null, 2))
+            .then(function () {
+              console.log('[ghzh] 汇总已复制到剪贴板');
+            })
+            .catch(function () {});
+        }
+
+        return summary;
+      },
+      clearGaps: function () {
+        try {
+          localStorage.removeItem(GAP_KEY);
+        } catch (err) {}
+        gapBuf = new Set();
+        return true;
       },
       dict: DICT,
       sections: DICT_SECTIONS,

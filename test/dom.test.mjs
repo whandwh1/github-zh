@@ -179,6 +179,16 @@ setTimeout(() => {
     check('审计能列出未覆盖文案', auditList.includes('Totally untranslated sentence here'), true);
     check('审计不会把已翻译文案算进去', auditList.includes('Issues'), false);
 
+    const origLog = window.console.log;
+    window.console.log = function () {};
+    const reportData = window.__ghzh.report();
+    window.console.log = origLog;
+
+    const allGaps = Object.values(reportData).flat();
+    check('跨页汇总能收集未翻译文案', allGaps.includes('Totally untranslated sentence here'), true);
+    check('跨页汇总按路径分组', Object.keys(reportData).some((k) => k.startsWith('/octocat')), true);
+    check('跨页汇总不含已翻译文案', allGaps.includes('Issues'), false);
+
     let failed = 0;
     for (const c of checks) {
       if (!c.ok) failed += 1;
