@@ -234,6 +234,22 @@ const cases = [
   ['0% used', '已用 0%'],
   ['250 characters remaining.', '还可输入 250 个字符。'],
   ['1 verified email configured', '已配置 1 个已验证邮箱'],
+  // 仪表盘与 Copilot 应用（来自缺漏报告）
+  ['Add files, and spaces', '添加文件和空间'],
+  ['An agent-driven desktop experience built natively on GitHub.', '原生构建于 GitHub、由智能体驱动的桌面体验。'],
+  ['Balance', '均衡'],
+  ['Choose a GitHub Copilot app download', '选择要下载的 GitHub Copilot 应用'],
+  ['Dismiss banner', '关闭横幅'],
+  ['Download for Windows', '下载 Windows 版'],
+  ['No issues found, try a different filter.', '未找到议题，请尝试其他筛选条件。'],
+  ['Pin your favorite repositories to your dashboard', '将你常用的仓库固定到仪表盘'],
+  ['The GitHub Copilot app, New', 'GitHub Copilot 应用（新）'],
+  ['View changelog →', '查看更新日志 →'],
+  ['View token usage', '查看令牌用量'],
+  // 动态规则：问候语、快捷键序列
+  ['Good afternoon, whandwh1!', '下午好，whandwh1！'],
+  ['Good morning, octocat!', '早上好，octocat！'],
+  ['g then d', 'g 然后 d'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

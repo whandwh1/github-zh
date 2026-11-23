@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.1
+// @version      1.3.2
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -1765,6 +1765,43 @@
       'For more information about the data your organization receives regarding your use of GitHub Copilot, please review':
         '有关组织收到的你使用 GitHub Copilot 的数据的更多信息，请查看',
       'You do not belong to any organizations.': '你不属于任何组织。'
+    },
+
+    /* ---------- 1.39 仪表盘与 Copilot 应用 ---------- */
+    '仪表盘与 Copilot 应用': {
+      'Add files, and spaces': '添加文件和空间',
+      'Agent': '智能体',
+      'An agent-driven desktop experience built natively on GitHub.':
+        '原生构建于 GitHub、由智能体驱动的桌面体验。',
+      'Ask': '询问',
+      'Auto': '自动',
+      'Balance': '均衡',
+      'Chat commands': '对话命令',
+      'Choose a GitHub Copilot app download': '选择要下载的 GitHub Copilot 应用',
+      'Debug': '调试',
+      'Dismiss banner': '关闭横幅',
+      'Download for Windows': '下载 Windows 版',
+      'GitHub Desktop now supports multiple accounts per host':
+        'GitHub Desktop 现在支持在同一主机上使用多个账户',
+      'GitHub Enterprise Server 3.23 release candidate': 'GitHub Enterprise Server 3.23 候选版本',
+      'Issue options': '议题选项',
+      'Latest from our changelog': '更新日志最新内容',
+      'Make Feed your homepage': '将动态设为你的主页',
+      'Make Home your homepage': '将首页设为你的主页',
+      'Model:': '模型：',
+      'No issues found, try a different filter.': '未找到议题，请尝试其他筛选条件。',
+      'No pull requests found, try a different filter.': '未找到拉取请求，请尝试其他筛选条件。',
+      'Optimized for:': '优化目标：',
+      'Pin your favorite repositories to your dashboard': '将你常用的仓库固定到仪表盘',
+      'Pull request options': '拉取请求选项',
+      'Security advisory permissions are now generally available': '安全公告权限现已全面可用',
+      'Send now': '立即发送',
+      'The GitHub Copilot app': 'GitHub Copilot 应用',
+      'The GitHub Copilot app, New': 'GitHub Copilot 应用（新）',
+      'View changelog →': '查看更新日志 →',
+      'View token usage': '查看令牌用量',
+      'Write code': '编写代码',
+      'enter': '回车'
     }
   };
 
@@ -1901,7 +1938,23 @@
         return '更新时间：' + (zh !== null ? zh.trim() : String(rest).trim());
       }
     ],
-    [/^page (\d+) of (\d+)$/i, '第 $1 页，共 $2 页']
+    [/^page (\d+) of (\d+)$/i, '第 $1 页，共 $2 页'],
+
+    /* ---- 问候语（仪表盘顶部，名字是动态的） ---- */
+    [
+      /^Good (morning|afternoon|evening), (.+?)!$/,
+      function (all, period, name) {
+        const greet = { morning: '早上好', afternoon: '下午好', evening: '晚上好' }[period];
+        if (!greet) return all;
+        return greet + '，' + name + '！';
+      }
+    ],
+
+    /* ---- 快捷键序列，如 "g then d" ---- */
+    [
+      /^([a-z0-9]|shift|ctrl|alt|esc|enter|tab|command) then ([a-z0-9]|shift|ctrl|alt|esc|enter|tab|command)$/i,
+      '$1 然后 $2'
+    ]
   ];
 
   /* ============================================================
