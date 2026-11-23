@@ -39,7 +39,7 @@ function readToken() {
   return line || null;
 }
 
-async function api(method, url, body, token) {
+async function request(method, url, body, token) {
   const res = await fetch(API + url, {
     method,
     headers: {
@@ -65,6 +65,21 @@ async function api(method, url, body, token) {
     throw err;
   }
   return data;
+}
+
+/** 网络抖动（fetch failed / ECONNRESET）自动重试，HTTP 状态错误不重试 */
+async function api(method, url, body, token, tries = 3) {
+  for (let i = 0; ; i++) {
+    try {
+      return await request(method, url, body, token);
+    } catch (err) {
+      const isNetwork = !err.status;
+      if (!isNetwork || i >= tries - 1) throw err;
+      const wait = 1200 * (i + 1);
+      console.warn(`  网络错误（${err.message}），${wait}ms 后重试…`);
+      await new Promise((r) => setTimeout(r, wait));
+    }
+  }
 }
 
 function git(args) {
