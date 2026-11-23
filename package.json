@@ -1,0 +1,14 @@
+{
+  "name": "github-zh",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "GitHub 汉化油猴脚本（Tampermonkey / Violentmonkey）",
+  "scripts": {
+    "test": "node test/smoke.mjs",
+    "test:dom": "node test/dom.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.0"
+  }
+}
