@@ -156,10 +156,15 @@ async function main() {
 
   try {
     git(['fetch', 'origin', '--quiet']);
+    // 只有远端引用确实指向刚推的提交时才 reset，否则会把工作区退回旧内容
+    const remoteHead = git(['rev-parse', `origin/${BRANCH}`]);
+    if (remoteHead !== commit.sha) {
+      throw new Error(`origin/${BRANCH} = ${remoteHead.slice(0, 7)}，与刚推的 ${commit.sha.slice(0, 7)} 不一致`);
+    }
     git(['reset', '--hard', `origin/${BRANCH}`, '--quiet']);
     console.log('local: 已同步到远端');
-  } catch {
-    console.log('local: 同步跳过（fetch 失败，不影响远端）');
+  } catch (err) {
+    console.log(`local: 未同步（${err.message}），远端已更新，请勿手动 reset --hard origin/main`);
   }
 }
 
