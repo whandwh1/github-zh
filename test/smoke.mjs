@@ -348,6 +348,24 @@ const cases = [
   ['Period: Current month', '周期：本月'],
   ['Insights: whandwh1/github-zh', '洞察：whandwh1/github-zh'],
   ['Showing data from 2026/11/1 to', '显示 2026/11/1 至'],
+  // 复刻（Fork）页面
+  ['Create a new fork', '创建新复刻'],
+  ['Create fork', '创建复刻'],
+  ['You are creating a fork in your personal account.', '你正在你的个人账户中创建复刻。'],
+  ['View existing forks.', '查看现有复刻。'],
+  ['Contribute back to', '回馈给'],
+  ['Copy the', '仅复制'],
+  ['branch only', '分支'],
+  ['is available.', '可用。'],
+  ['to search', '进行搜索'],
+  [
+    'is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.',
+    '是仓库的副本。复刻仓库让你可以自由试验改动，而不影响原项目。'
+  ],
+  [
+    'By default, forks are named the same as their upstream repository. You can customize the name to distinguish it further.',
+    '默认情况下，复刻的名称与其上游仓库相同。你可以自定义名称以便进一步区分。'
+  ],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],

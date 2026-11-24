@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.14
+// @version      1.3.15
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2455,6 +2455,23 @@
       'Total minutes used across failed jobs in this repository for current month':
         '本月此仓库失败作业的总使用分钟数',
       'Workflow': '工作流'
+    },
+    /* ---------- 1.54 复刻（Fork）页面 ---------- */
+    '复刻页面': {
+      'By default, forks are named the same as their upstream repository. You can customize the name to distinguish it further.':
+        '默认情况下，复刻的名称与其上游仓库相同。你可以自定义名称以便进一步区分。',
+      'Contribute back to': '回馈给',
+      'Copy the': '仅复制',
+      'Create a new fork': '创建新复刻',
+      'Create fork': '创建复刻',
+      'View existing forks.': '查看现有复刻。',
+      'You are creating a fork in your personal account.':
+        '你正在你的个人账户中创建复刻。',
+      'branch only': '分支',
+      'is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.':
+        '是仓库的副本。复刻仓库让你可以自由试验改动，而不影响原项目。',
+      'is available.': '可用。',
+      'to search': '进行搜索'
     }
   };
 
