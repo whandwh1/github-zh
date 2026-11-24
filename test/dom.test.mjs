@@ -189,6 +189,26 @@ setTimeout(() => {
     check('跨页汇总按路径分组', Object.keys(reportData).some((k) => k.startsWith('/octocat')), true);
     check('跨页汇总不含已翻译文案', allGaps.includes('Issues'), false);
 
+    // 噪声过滤：用户名 / 仓库名 / 快捷键 / URL 不该进汇总
+    const userLink = window.document.createElement('a');
+    userLink.setAttribute('href', '/frank');
+    userLink.setAttribute('data-hovercard-type', 'user');
+    userLink.textContent = 'frank';
+    check('用户主页链接按噪声过滤', window.__ghzh.isNoiseGap('frank', userLink.firstChild), true);
+
+    const repoLink = window.document.createElement('a');
+    repoLink.setAttribute('href', '/whandwh1/frankrust');
+    repoLink.textContent = 'frankrust';
+    check('仓库名链接按噪声过滤', window.__ghzh.isNoiseGap('frankrust', repoLink.firstChild), true);
+
+    const pageLink = window.document.createElement('a');
+    pageLink.setAttribute('href', '/settings');
+    pageLink.textContent = 'Billing';
+    check('普通链接文字不算噪声', window.__ghzh.isNoiseGap('Billing', pageLink.firstChild), false);
+
+    check('快捷键按噪声过滤', window.__ghzh.isNoiseGap('ctrl shift p', null), true);
+    check('正常界面文案不算噪声', window.__ghzh.isNoiseGap('Totally untranslated sentence here', null), false);
+
     let failed = 0;
     for (const c of checks) {
       if (!c.ok) failed += 1;

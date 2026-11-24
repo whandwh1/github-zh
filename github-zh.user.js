@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.15
+// @version      1.3.16
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2778,6 +2778,53 @@
     gapBuf = new Set();
   }
 
+  /* 这些文本不属于「漏翻」，而是用户名 / URL / 文件名 / 快捷键 / 版权行，不进收集列表 */
+  const GAP_COPY_RE = /^(?:©|\(c\)|copyright\b)/i;
+  const GAP_URL_RE = /^(?:[a-z][\w+.-]*:\/\/|www\.)/i;
+  const GAP_DOMAIN_RE = /^[\w-]+(?:\.[\w-]+)*\.(?:com|org|net|io|dev|app|cn|co|me|sh|tv)(?:\/.*)?$/i;
+  const GAP_FILE_RE = /^[\w.-]+\.(?:md|markdown|mjs|cjs|js|json|ya?ml|toml|txt|lock|bat|cmd|sh|ps1|css|html?|png|jpe?g|svg|gif|webp|ico)$/i;
+  const GAP_KEYS_RE = /^(?:(?:alt|shift|ctrl|control|cmd|command|option|opt|meta|fn|enter|return|esc|escape|tab|space|del|delete|backspace|up|down|left|right)\s+){1,4}[a-z0-9]$/i;
+  const GAP_HANDLE_RE = /^[A-Za-z][A-Za-z0-9._-]*$/;
+
+  /** 往上找最近的 <a>，用来判断这段文字是不是用户名 / 仓库名 */
+  function nearestLink(ref) {
+    if (!ref) return null;
+    let el = ref.nodeType === 3 ? ref.parentElement : ref;
+    if (!el || el.nodeType !== 1) return null;
+    if (el.tagName === 'A') return el;
+    return el.closest ? el.closest('a') : null;
+  }
+
+  /** 文字与链接路径最后一段相同 → 多半是用户名/仓库名，如 /frank、/whandwh1/frankrust */
+  function isNameLinkText(ref, text) {
+    const a = nearestLink(ref);
+    if (!a) return false;
+    if (a.getAttribute('data-hovercard-type') || a.getAttribute('data-hovercard-url')) return true;
+
+    const href = a.getAttribute('href');
+    if (!href) return false;
+
+    const pathname = href.split(/[?#]/)[0].replace(/\/+$/, '');
+    if (!/^\/[\w.@-]+(?:\/[\w.@-]+)?$/.test(pathname)) return false;
+
+    return pathname.split('/').pop().toLowerCase() === text.toLowerCase();
+  }
+
+  function isNoiseGap(text, ref) {
+    if (!text) return true;
+    if (!/[A-Za-z]/.test(text)) return true; // 纯数字 / 符号
+    if (GAP_COPY_RE.test(text)) return true; // 版权行
+    if (GAP_URL_RE.test(text) || GAP_DOMAIN_RE.test(text)) return true; // 网址 / 域名
+    if (GAP_FILE_RE.test(text)) return true; // 文件名
+    if (GAP_KEYS_RE.test(text)) return true; // 键盘快捷键
+
+    // 单段无空格的 token：带数字的（SYJun404 / whandwh1）按账号名处理；否则再看链接路径
+    if (GAP_HANDLE_RE.test(text) && /\d/.test(text)) return true;
+    if (isNameLinkText(ref, text)) return true;
+
+    return false;
+  }
+
   /** 记下一条「英文但没翻译」的文案，稍后批量写入 localStorage */
   function noteGap(text) {
     if (!text || text.length > 120) return;
@@ -2898,7 +2945,7 @@
     return wrap;
   }
 
-  function translateString(raw) {
+  function translateString(raw, ref) {
     if (!raw) return null;
 
     const m = /^(\s*)([\s\S]*?)(\s*)$/.exec(raw);
@@ -2940,7 +2987,7 @@
     }
 
     if (typeof out !== 'string' || !out || out === norm) {
-      noteGap(norm);
+      if (!isNoiseGap(norm, ref)) noteGap(norm);
       return null;
     }
     return lead + out + tail;
@@ -3015,7 +3062,7 @@
     if (!cur || !cur.trim()) return;
     if (textCache.get(node) === cur) return; // 是我们自己写的，跳过
 
-    const out = translateString(cur);
+    const out = translateString(cur, node);
     if (out == null) return;
 
     textCache.set(node, out);
@@ -3044,7 +3091,7 @@
       if (!raw || raw.length > MAX_LEN) continue;
       if (cache[name] === raw) continue;
 
-      const out = translateString(raw);
+      const out = translateString(raw, el);
       if (!out) continue;
 
       cache[name] = out;
@@ -3324,7 +3371,8 @@
             if (!norm || norm.length < 2 || norm.length > MAX_LEN) continue;
             if (!/[A-Za-z]/.test(norm) || CJK_RE.test(norm)) continue;
             if (/^[\w.@-]+\/[\w.@-]+$/.test(norm)) continue;
-            if (translateString(raw) !== null) continue;
+            if (translateString(raw, n) !== null) continue;
+            if (isNoiseGap(norm, n)) continue;
 
             hit.set(norm, (hit.get(norm) || 0) + 1);
           }
@@ -3357,15 +3405,23 @@
         let total = 0;
 
         let stale = 0;
+        let noise = 0;
         Object.keys(db).sort().forEach(function (key) {
           const all = Object.keys(db[key]);
-          // 只保留「当前版本仍未覆盖」的，历史记录自动过滤掉
-          const list = all
-            .filter(function (s) {
-              return translateString(s) === null;
-            })
-            .sort();
-          stale += all.length - list.length;
+          const list = [];
+          // 只保留「当前版本仍未覆盖、且确实是界面文案」的，旧记录与非文案自动过滤掉
+          all.forEach(function (s) {
+            if (translateString(s) !== null) {
+              stale += 1;
+              return;
+            }
+            if (isNoiseGap(s, null)) {
+              noise += 1;
+              return;
+            }
+            list.push(s);
+          });
+          list.sort();
           if (!list.length) return;
           summary[key] = list;
           total += list.length;
@@ -3373,6 +3429,7 @@
 
         console.log('[ghzh] 未翻译汇总：' + total + ' 条，来自 ' + Object.keys(summary).length + ' 个页面');
         if (stale) console.log('[ghzh] 已自动过滤 ' + stale + ' 条旧记录（已被当前词库覆盖）');
+        if (noise) console.log('[ghzh] 已自动过滤 ' + noise + ' 条非文案记录（用户名 / URL / 快捷键等）');
 
         if (!total) {
           const tip = '暂无记录。请先在设置里打开几个子页面（脚本会自动记录没翻到的英文），再回来导出。';
@@ -3402,7 +3459,8 @@
       },
       dict: DICT,
       sections: DICT_SECTIONS,
-      translate: translateString
+      translate: translateString,
+      isNoiseGap: isNoiseGap
     };
   }
 })();

@@ -382,10 +382,40 @@ for (const [input, expected] of cases) {
 }
 
 console.log(`\n词库分组：${Object.keys(api.sections).length}，原始词条：${Object.values(api.sections).reduce((n, g) => n + Object.keys(g).length, 0)}，索引后：${api.dict.size}`);
-console.log(`用例：${cases.length}，失败：${failed}`);
+
+// 漏翻收集的噪声过滤（用户名 / URL / 文件名 / 快捷键 / 版权行不进 gaps 列表）
+const noiseCases = [
+  ['SYJun404', true],
+  ['whandwh1', true],
+  ['alt shift r', true],
+  ['www.b...', true],
+  ['© 2026 GitHub, Inc.', true],
+  ['README.md', true],
+  ['package.json', true],
+  ['github.com', true],
+  ['https://github.com/whandwh1/github-zh', true],
+  ['2026', true],
+  ['v1.3.16', true],
+  ['Showing 3 of 12', false],
+  ['learn more', false],
+  ['Unwatch', false],
+  ['Fork page title', false]
+];
+
+let noiseFailed = 0;
+for (const [input, expected] of noiseCases) {
+  const actual = api.isNoiseGap(input, null);
+  const ok = actual === expected;
+  if (!ok) noiseFailed += 1;
+  console.log(`${ok ? 'PASS' : 'FAIL'}  noise ${JSON.stringify(input)} -> ${actual}${ok ? '' : `  期望 ${expected}`}`);
+}
+
+const totalCases = cases.length + noiseCases.length;
+const totalFailed = failed + noiseFailed;
+console.log(`用例：${totalCases}，失败：${totalFailed}`);
 
 // 页面标题翻译
 setTimeout(() => {
   console.log(`标题：${documentStub.title}`);
-  process.exit(failed === 0 ? 0 : 1);
+  process.exit(totalFailed === 0 ? 0 : 1);
 }, 120);
