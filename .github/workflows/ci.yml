@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: 20
       - name: 语法检查
-        run: node --check github-zh.user.js
+        run: |
+          node --check github-zh.user.js
+          node --check tools/push-api.mjs
       - name: 词库与规则单测
         run: node test/smoke.mjs

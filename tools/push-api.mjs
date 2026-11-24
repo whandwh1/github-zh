@@ -4,10 +4,15 @@
  *
  * 用法：
  *   node tools/push-api.mjs "commit message"
+ *   node tools/push-api.mjs --check        # 只探测代理能不能通，不推送
  *
  * Token 来源（二选一）：
  *   1. 环境变量 GITHUB_TOKEN
  *   2. 文件 ~/.workbuddy/.secrets/github-zh.token（只读第一行非注释内容）
+ *
+ * 代理：按 GHZH_PROXY → HTTPS_PROXY → HTTP_PROXY → 127.0.0.1:7890 的顺序逐个实测，
+ * 用第一个真正能连上 api.github.com 的；GHZH_PROXY=none 表示强制直连。
+ * （环境变量里的端口是会话级的，可能随会话失效，所以必须实测而不是照抄。）
  *
  * 需要的权限：目标仓库的 Contents: Read and write。
  */
@@ -25,10 +30,82 @@ const BRANCH = 'main';
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const API = 'https://api.github.com';
 
-// 本机系统代理（Clash 等）。不要直连——这台机器访问 GitHub 必须走代理。
-// 用 GHZH_PROXY 覆盖，设为 none 才直连。
-const PROXY = process.env.GHZH_PROXY || 'http://127.0.0.1:7890';
-const USE_PROXY = PROXY && PROXY !== 'none';
+let PROXY = null; // 由 resolveProxy() 探测决定，null 表示直连
+let PROXY_OK = false; // 探测是否真的连通（直连成功也算）
+
+/** 代理候选，按优先级去重；显式 none/direct 会直接终止候选列表 */
+function proxyCandidates() {
+  const raw = [
+    process.env.GHZH_PROXY,
+    process.env.https_proxy,
+    process.env.HTTPS_PROXY,
+    process.env.http_proxy,
+    process.env.HTTP_PROXY,
+    'http://127.0.0.1:7890'
+  ];
+
+  const seen = new Set();
+  const list = [];
+
+  for (const item of raw) {
+    const v = (item || '').trim();
+    if (!v) continue;
+
+    if (v.toLowerCase() === 'none' || v.toLowerCase() === 'direct') {
+      list.push(null);
+      break;
+    }
+
+    const url = /^[a-z][\w+.-]*:\/\//i.test(v) ? v : `http://${v}`;
+    if (seen.has(url)) continue;
+    seen.add(url);
+    list.push(url);
+  }
+
+  return list;
+}
+
+/** 用一次廉价请求判断这个代理（或直连）能不能通 */
+function probe(proxy) {
+  // Windows 上 curl.exe 不认识 /dev/null（只有 bash 会翻译），要写 NUL
+  const sink = process.platform === 'win32' ? 'NUL' : '/dev/null';
+
+  const args = [
+    '-sS', '-o', sink, '-m', '8', '--http1.1', '-w', '%{http_code}',
+    ...(proxy ? ['-x', proxy] : []),
+    `${API}/rate_limit`
+  ];
+
+  try {
+    const out = execFileSync('curl', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    const code = parseInt(String(out).trim(), 10);
+    return Number.isFinite(code) && code > 0;
+  } catch {
+    return false;
+  }
+}
+
+/** 逐个候选实测，返回第一个可用的代理地址；都不通则退回直连 */
+function resolveProxy() {
+  for (const candidate of proxyCandidates()) {
+    const label = candidate || '直连';
+    if (probe(candidate)) {
+      PROXY_OK = true;
+      console.log(`proxy: ${label}`);
+      return candidate;
+    }
+    console.log(`proxy: ${label} 不通，试下一个`);
+  }
+
+  if (probe(null)) {
+    PROXY_OK = true;
+    console.log('proxy: 直连可用');
+    return null;
+  }
+
+  console.log('proxy: 代理和直连都不通，先检查网络 / 代理软件是否在运行');
+  return null;
+}
 
 function readToken() {
   if (process.env.GITHUB_TOKEN && process.env.GITHUB_TOKEN.trim()) {
@@ -47,7 +124,7 @@ function readToken() {
 async function request(method, url, body, token) {
   const args = [
     '-sS', '-m', '60', '--http1.1',
-    ...(USE_PROXY ? ['-x', PROXY] : []),
+    ...(PROXY ? ['-x', PROXY] : []),
     '-H', 'Expect:',
     '-w', '\\n%{http_code}', '-K', '-'
   ];
@@ -143,6 +220,17 @@ function collectFiles() {
 
 async function main() {
   const message = process.argv[2] || 'chore: update';
+
+  // --check：只探测代理，不推送（没有 token 也能跑）
+  if (process.argv.includes('--check')) {
+    PROXY = resolveProxy();
+    if (!PROXY_OK) console.log('不可用：代理和直连都连不上 api.github.com');
+    else console.log(PROXY ? `可以推送（走代理 ${PROXY}）` : '可以推送（直连）');
+    return;
+  }
+
+  PROXY = resolveProxy();
+
   const token = readToken();
   if (!token) {
     console.error('缺少 token。请把 GitHub token 写入：');
