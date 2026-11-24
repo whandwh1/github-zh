@@ -2,7 +2,7 @@
 // @name         GitHub 汉化 · 中文化插件
 // @name:en      GitHub Chinese Localization
 // @namespace    https://github.com/gh-zh-unofficial
-// @version      1.3.13
+// @version      1.3.14
 // @description  把 GitHub 界面翻译成简体中文：全局导航、仓库、代码浏览、议题、拉取请求、讨论、Actions、设置、通知、搜索等，支持 Turbo 局部刷新与动态渲染。
 // @description:en  Translate GitHub UI into Simplified Chinese, with Turbo / SPA navigation support.
 // @author       WorkBuddy
@@ -2426,6 +2426,35 @@
       'will be deleted': '将被删除',
       'with a file smaller than 2GB.': '使用小于 2GB 的文件。',
       "with a file that's not empty.": '使用非空文件。'
+    },
+    /* ---------- 1.53 Actions 性能指标 ---------- */
+    'Actions 指标': {
+      'Actions Performance Metrics': 'Actions 性能指标',
+      'Actions performance metrics': 'Actions 性能指标',
+      'Actions usage metrics': 'Actions 用量指标',
+      'Average queue time of jobs in this repository for current month':
+        '本月此仓库作业的平均排队时间',
+      'Average run time of jobs in this repository for current month':
+        '本月此仓库作业的平均运行时间',
+      'Avg job queue time': '作业平均排队时间',
+      'Avg job run time': '作业平均运行时间',
+      'Avg run time': '平均运行时间',
+      'Community standards': '社区准则',
+      'Download report': '下载报告',
+      'Failed job usage': '失败作业用量',
+      'Failure rate across jobs in this repository for current month': '本月此仓库作业的失败率',
+      'Has job failures': '存在作业失败',
+      'Job failure rate': '作业失败率',
+      'Metrics navigation': '指标导航',
+      'Page': '页面',
+      'Period: Current month': '周期：本月',
+      'Row Actions': '行操作',
+      'Runner type': '运行器类型',
+      'Runtime OS': '运行时操作系统',
+      'Showing': '显示',
+      'Total minutes used across failed jobs in this repository for current month':
+        '本月此仓库失败作业的总使用分钟数',
+      'Workflow': '工作流'
     }
   };
 
@@ -2587,6 +2616,7 @@
     [/^Delete ([\w.-]+\/[\w.-]+)$/, '删除 $1'],
     [/^Make ([\w.-]+\/[\w.-]+) private$/, '将 $1 设为私有'],
     [/^Settings: ([\w.-]+\/[\w.-]+)$/, '设置：$1'],
+    [/^Insights: ([\w.-]+\/[\w.-]+)$/, '洞察：$1'],
     [/^(\d+) branch protection rules?$/i, '$1 条分支保护规则'],
 
     /* ---- 代码空间（分支名是动态的） ---- */
@@ -2681,7 +2711,10 @@
         const mo = MONTHS[mon.toLowerCase()];
         return mo ? '于 ' + mo + ' 月 ' + day + ' 日' : all;
       }
-    ]
+    ],
+
+    /* ---- 指标页的统计区间 ---- */
+    [/^Showing data from (.+?) to$/, '显示 $1 至']
   ];
 
   /* ============================================================

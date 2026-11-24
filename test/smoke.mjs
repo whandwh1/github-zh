@@ -340,6 +340,14 @@ const cases = [
   ['9 followers', '9 位关注者'],
   ['1.2k followers', '1.2k 位关注者'],
   ['2 following', '2 正在关注'],
+  // Actions 性能指标
+  ['Actions performance metrics', 'Actions 性能指标'],
+  ['Avg job queue time', '作业平均排队时间'],
+  ['Job failure rate', '作业失败率'],
+  ['Community standards', '社区准则'],
+  ['Period: Current month', '周期：本月'],
+  ['Insights: whandwh1/github-zh', '洞察：whandwh1/github-zh'],
+  ['Showing data from 2026/11/1 to', '显示 2026/11/1 至'],
   // 以下应当保持原样（返回 null）
   ['octocat/Hello-World', null],
   ['README.md', null],
